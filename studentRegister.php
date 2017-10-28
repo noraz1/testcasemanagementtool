@@ -1,3 +1,59 @@
+<?php
+// panggil file connection
+
+include_once 'conn.php';
+
+// check ade value post tak
+if (isset ($_POST['submit'])) {
+
+  // declare variable untuk store data dari input
+
+  $firstname =$_POST['firstname'];
+  $lastname =$_POST['lastname'];
+  $matricnum =$_POST['matricnum'];
+  $username =$_POST['username'];
+  $email =$_POST['email'];
+  $password =$_POST['password'];
+  $confirmpassword =$_POST['confirmpassword'];
+
+  // insert
+
+  $query = " INSERT INTO student (firstname, lastname, matricnum, username, email, password, confirmpassword ) 
+  VALUES ('$firstname','$lastname', '$matricnum', '$username','$email', '$password', '$confirmpassword' )";
+
+  $result = mysql_query($query);
+
+
+  if ($result)
+  {
+
+?>
+
+<script type="text/javascript">
+alert ('register success!');
+
+</script>
+
+<?php
+  $_SESSION['matricnum'] = $row['matricnum'];
+ header("Location: index.php");
+}
+else
+{
+?>
+
+<script type="text/javascript">
+alert ('failed to register. please try again!');
+</script>
+
+<?php
+}
+
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,31 +72,31 @@
 <legend>Student Registeration</legend>
     <form method="post">
      <div class="form-group ">
-      <label class="control-label requiredField" for="firstName">
+      <label class="control-label requiredField" for="firstname">
        First Name
        <span class="asteriskField">
         *
        </span>
       </label>
-      <input class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" type="text"/>
+      <input class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" type="text"/>
      </div>
      <div class="form-group ">
-      <label class="control-label requiredField" for="lastName">
+      <label class="control-label requiredField" for="lastname">
        Last Name
        <span class="asteriskField">
         *
        </span>
       </label>
-      <input class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" type="text"/>
+      <input class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" type="text"/>
      </div>
      <div class="form-group ">
-      <label class="control-label requiredField" for="subject2">
+      <label class="control-label requiredField" for="matricnum">
        Matric Number
        <span class="asteriskField">
         *
        </span>
       </label>
-      <input class="form-control" id="subject2" name="subject2" placeholder="Enter Matric Number" type="text"/>
+      <input class="form-control" id="matricnum" name="matricnum" placeholder="Enter Matric Number" type="text"/>
      </div>
      <div class="form-group ">
       <label class="control-label requiredField" for="username">
@@ -70,13 +126,13 @@
       <input class="form-control" id="password" name="password" placeholder="Enter Password" type="text"/>
      </div>
      <div class="form-group ">
-      <label class="control-label requiredField" for="confirmPassword">
+      <label class="control-label requiredField" for="confirmpassword">
        Confirm Password
        <span class="asteriskField">
         *
        </span>
       </label>
-      <input class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Enter Confirm Password" type="text"/>
+      <input class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Enter Confirm Password" type="text"/>
      </div>
      <div class="form-group">
       <div>
@@ -84,7 +140,8 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>
   <div class="col-md-8">
-    <button id="submit" name="submit" class="btn btn-success">Sign In</button>
+
+    <button id="submit" name="submit" class="btn btn-success" href="login.php">Sign In</button>
     <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
   </div>
 </div>
