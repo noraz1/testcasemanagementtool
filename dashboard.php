@@ -1,4 +1,69 @@
 
+<?php
+include_once 'conn.php';
+
+// check ade value post tak
+if (isset ($_POST['submit'])) {
+  // declare variable untuk store data dari input
+  
+  $projectname =$_POST['projectname'];
+  $projectdesc =$_POST['projectdesc'];
+
+$query= "INSERT INTO project (projectname, projectdesc ) VALUES ('$projectname', '$projectdesc') ";
+
+$result- mysql_query($query);
+
+if ($result)
+  {
+?>
+<script type="text/javascript">
+alert ('register success!');
+
+</script>
+<?php
+}
+
+else
+{
+?>
+
+<script type="text/javascript">
+alert ('failed to register. please try again!');
+</script>
+
+<?php
+}
+
+}
+?>
+
+<?php 
+ 
+   $result1=mysql_query("SELECT * FROM project ");
+   $fetched_row=mysql_fetch_array($result1);
+?>
+
+<?php
+   if (isset($_POST["delete"])){
+  
+       $sql= ("DELETE FROM project WHERE projectname = '$projectname' AND projectdesc = '$projectdesc' ");
+     $res = mysql_query($sql);
+
+
+if ($row['projectname']=$projectname && $row['projectdesc']=$projectdesc){
+
+     echo"your project has been deleted";
+     } ELSE {
+      ?>
+  <script type="text/javascript">
+  alert("Your project cannot be deleted");
+  </script>
+  <?php
+    } 
+      
+}
+ ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -245,10 +310,10 @@
       <input class="form-control" id="projectname" name="projectname" placeholder="Enter Project Name" type="text"/>
      </div>
      <div class="form-group ">
-      <label class="control-label " for="projectdescription">
+      <label class="control-label " for="projectdesc">
        Project Description
       </label>
-      <textarea class="form-control" cols="40" rows="10" id="projectdescription" name="projectdescription" type="text"> </textarea> 
+      <textarea class="form-control" cols="40" rows="10" id="projectdesc" name="projectdesc" type="text"> </textarea> 
      </div>
      <div class="form-group">
       <div>
@@ -268,24 +333,30 @@
                                      </div>
 
                                     <thead>
-                                        <th></th>
+                                        
                                        <th>Number</th>
                                         <th>Project Name</th>
                                       <th>Project Description</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td> <img class="img-responsive" src="assets/img/tools/Drill.png" width="25"/></td>
-                                       <td>1</td>
-                                            <td>Project 1</td>
-                                            <td>saffsafas</td>
+                                    <?php 
+                                    $i =1;
+                                        while (  $fetched_row=mysql_fetch_array($result1)) {
+                                            
+                                            ?>
+                                              <tr>
+                                           
+                                       <td><?php echo $i; ?></td>
+                                            <td><?php echo $fetched_row['projectname']; ?></td>
+                                            <td><?php echo $fetched_row['projectdesc']; ?></td>
+                                          <td>  <button id="delete" name="delete" class="btn btn-danger">Delete</button></td>
                                         </tr>
-                                        <tr>
-                                            <td> <img class="img-responsive" src="assets/img/tools/Drill.png" width="25"/></td>
-                                          <td>2</td>
-                                            <td>Project 2</td>
-                                            <td>dcscds vewweecwv  jcbwjbwej cjbdjcwe jebcjew cjew jbeciubweveocouwbevu jebvicubeuvcbe ebcuiebvoube ejhewiubcwe ewbciuwebcubed</td>
-                                        </tr>
+                                          <?php 
+                                        $i++;
+                                            } 
+?>
+                                      
+                                       
 
 
                                     </tbody>
@@ -300,27 +371,7 @@
             </div>
         </div>
 
-                                    <div class="content table-responsive table-full-width">
-                                        <table class="table table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Staff ID</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Mohd Mazlan</td>
-                                                    <td>177132</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Muaz Toshihiko</td>
-                                                    <td>124233</td>
-                                                </tr>
-                                            
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    
 -->
 
 

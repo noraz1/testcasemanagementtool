@@ -35,8 +35,7 @@ alert ('register success!');
 </script>
 
 <?php
-  $_SESSION['matricnum'] = $row['matricnum'];
- header("Location: index.php");
+
 }
 else
 {
