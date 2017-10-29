@@ -22,7 +22,7 @@ if ($row['username'] == $username && $row['password'] == $password)  {
 
   <?php
   $_SESSION['matricnum'] = $row['matricnum'];
- header("Location: index.php");
+ header("Location: dashboard.php");
 }
 else
 {
