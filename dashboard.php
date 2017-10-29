@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -13,10 +15,16 @@
     font-size:14px;
     font-weight:700;
 }
+
+
+
+}
 </style>
+
 <head>
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/hilti.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -69,7 +77,7 @@
 
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard.html">
+                        <a href="dashboard.php">
                             <i class="pe-7s-graph"></i>
                             <p>All Project</p>
                         </a>
@@ -85,25 +93,25 @@
 -->
 
                     <li>
-                        <a href="devicelist.html">
+                        <a href="index.php">
                             <i class="pe-7s-note2"></i>
                             <p>Overview</p>
                         </a>
                     </li>
                     <li>
-                    <a href="inventorylist.html">
+                    <a href="testplan.php">
                         <i class="pe-7s-news-paper"></i>
                         <p>Test Plan</p>
                     </a>
                 </li>
                     <li>
-                        <a href="icons.html">
+                        <a href="testsuite.php">
                             <i class="pe-7s-science"></i>
                             <p>Test Suite</p>
                         </a>
                     </li>
                     <li>
-                        <a href="maps.html">
+                        <a href="testrun.php">
                             <i class="pe-7s-map-marker"></i>
                             <p>Test Run</p>
                         </a>
@@ -207,6 +215,58 @@
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
+                                    <div class="w3-container">
+                                        <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Add Project</button>
+
+                                            <div id="id01" class="w3-modal">
+                                                  <div class="w3-modal-content">
+                                                          <div class="w3-container">
+                                                                 <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                                                    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+<div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <form method="post">
+     <div class="form-group ">
+        <legend>Add New Project</legend>
+      <label class="control-label requiredField" for="projectname">
+       Project Name
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="projectname" name="projectname" placeholder="Enter Project Name" type="text"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="projectdescription">
+       Project Description
+      </label>
+      <textarea class="form-control" cols="40" rows="10" id="projectdescription" name="projectdescription" type="text"> </textarea> 
+     </div>
+     <div class="form-group">
+      <div>
+       <button class="btn btn-primary " name="submit" type="submit">
+        Submit
+       </button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+</div>
+                                                          </div>
+                                                   </div>
+                                             </div>
+                                     </div>
+
                                     <thead>
                                         <th></th>
                                        <th>Number</th>
@@ -229,7 +289,8 @@
 
 
                                     </tbody>
-                                     <button id="btnproject" type="submit" name="submit" class="btn btn-success" >Add Project</button>
+                                   
+ 
                                 </table>
                             
                             </div>
@@ -238,7 +299,7 @@
                 </div>
             </div>
         </div>
-<!--
+
                                     <div class="content table-responsive table-full-width">
                                         <table class="table table-hover table-striped">
                                             <thead>
