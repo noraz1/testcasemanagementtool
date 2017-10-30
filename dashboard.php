@@ -11,7 +11,7 @@ if (isset ($_POST['submit'])) {
 
 $query= "INSERT INTO project (projectname, projectdesc ) VALUES ('$projectname', '$projectdesc') ";
 
-$result- mysql_query($query);
+$result= mysql_query($query);
 
 if ($result)
   {
@@ -43,26 +43,7 @@ alert ('failed to register. please try again!');
    $fetched_row=mysql_fetch_array($result1);
 ?>
 
-<?php
-   if (isset($_POST["delete"])){
-  
-       $sql= ("DELETE FROM project WHERE projectname = '$projectname' AND projectdesc = '$projectdesc' ");
-     $res = mysql_query($sql);
 
-
-if ($row['projectname']=$projectname && $row['projectdesc']=$projectdesc){
-
-     echo"your project has been deleted";
-     } ELSE {
-      ?>
-  <script type="text/javascript">
-  alert("Your project cannot be deleted");
-  </script>
-  <?php
-    } 
-      
-}
- ?>
 
 
 <!doctype html>
@@ -349,16 +330,46 @@ if ($row['projectname']=$projectname && $row['projectdesc']=$projectdesc){
                                        <td><?php echo $i; ?></td>
                                             <td><?php echo $fetched_row['projectname']; ?></td>
                                             <td><?php echo $fetched_row['projectdesc']; ?></td>
-                                          <td>  <button id="delete" name="delete" class="btn btn-danger">Delete</button></td>
+                                            <td> <a onclick = "return confirm ('Are you sure? ')" href = "dashboard.php?idd=<?php echo $fetched_row['projectid'] ?>" class = "btn btn-danger"> Delete </a></td>
+                                     
                                         </tr>
                                           <?php 
                                         $i++;
                                             } 
-?>
-                                      
-                                       
+
+                                           if (isset($GET['idd'])){
+                                                $idd = $_GET['idd'];
+
+                                                $res = mysql_query("DELETE from project WHERE projectid ='$idd' ");
+
+                                                 if ($res)
+                                                         {
+                                                        ?>
+
+                                                        <script type="text/javascript">
+                                                        alert ('delete success!');
+
+                                                        </script>
+
+                                                        <?php
+
+                                                        }
+                                                        else
+                                                        {
+                                                        ?>
+
+                                                        <script type="text/javascript">
+                                                        alert ('failed to delete. please try again!');
+                                                        </script>
+
+                                                        <?php
+                                                        }
+
+                                                        }
+                                                        ?>
 
 
+                                         
                                     </tbody>
                                    
  
@@ -372,7 +383,7 @@ if ($row['projectname']=$projectname && $row['projectdesc']=$projectdesc){
         </div>
 
                                     
--->
+
 
 
                                 </div>
