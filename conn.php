@@ -3,16 +3,9 @@ $host = "localhost";
 $user = "root";
 $password = "";
 $database = "tcmt";
-
-if(!mysql_connect($host,$user,$password)){
-	die('connection problem!' .mysql_error());
-} else {
-//echo "success connect";
-}
-
-if(!mysql_select_db($database)){
-	die('database selection problem!'.mysql_error());
-} else {
-	//echo "database select correct";
+$con = mysqli_connect($host,$user,$password,$database);
+// check connection
+if (mysqli_connect_errno()){
+	echo "fail to connect to mysql:".mysqli_connect_errno;
 }
 ?>

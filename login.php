@@ -8,10 +8,10 @@ if(isset($_POST['submit']))
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$res = mysql_query("SELECT * FROM student WHERE username = '$username'")
+$res = mysqli_query($con,"SELECT * FROM student WHERE username = '$username'")
 or die (" failed to query database" .mysql_error());
 
-$row = mysql_fetch_array($res);
+$row = mysqli_fetch_array($res);
 
 if ($row['username'] == $username && $row['password'] == $password)  {
 

@@ -21,7 +21,7 @@ if (isset ($_POST['submit'])) {
   $query = " INSERT INTO student (firstname, lastname, matricnum, username, email, password, confirmpassword ) 
   VALUES ('$firstname','$lastname', '$matricnum', '$username','$email', '$password', '$confirmpassword' )";
 
-  $result = mysql_query($query);
+  $result = mysqli_query($con,$query);
 
 
   if ($result)
@@ -31,11 +31,9 @@ if (isset ($_POST['submit'])) {
 
 <script type="text/javascript">
 alert ('register success!');
-
 </script>
 
 <?php
-
 }
 else
 {
