@@ -101,7 +101,7 @@ if (isset($_GET['del'])) {
 <body>
 
 <div class="wrapper">
-<div class="sidebar" data-color="blue" data-image="soft.jpg">
+<div class="sidebar" data-color="blue" data-image="assets/img/soft.jpg">
 
     <!--
 Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
