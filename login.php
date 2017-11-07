@@ -14,15 +14,16 @@ or die (" failed to query database" .mysql_error());
 $row = mysqli_fetch_array($res);
 
 if ($row['username'] == $username && $row['password'] == $password)  {
-
 ?>
   <script type="text/javascript">
+
   alert ("Login successfully! ")
   </script>
 
   <?php
-  $_SESSION['matricnum'] = $row['matricnum'];
- header("Location: dashboard.php");
+    $_SESSION['matricnum'] = $row['matricnum'];
+    echo $_SESSION['matricnum'];
+ header("Location: dashboard1.php");
 }
 else
 {

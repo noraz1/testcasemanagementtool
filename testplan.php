@@ -139,30 +139,12 @@
                         </ul> 
 
                         <ul class="nav navbar-nav navbar-right">
+                        <li>
+                        <a href="user.php"> <?php  echo  $_SESSION['matricnum']; ?> </a>
+                        </li>
+                       
                             <li>
-                                <a href="user.php">
-                               Account
-                            </a>
-                            </li>
-                           <!-- <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Dropdown
-                                    <b class="caret"></b>
-                              </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li> -->
-                            <li>
-                                <a href="login.php">
-                                Log out
-                            </a>
+                            <a onclick="return confirm('Are you sure want to logout?')"  href="logout.php">Log out</a>
                             </li>
                         </ul>
                     </div>
@@ -280,29 +262,6 @@
                 </div>
             </div>
         </div>
-<!--
-                                    <div class="content table-responsive table-full-width">
-                                        <table class="table table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Staff ID</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Mohd Mazlan</td>
-                                                    <td>177132</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Muaz Toshihiko</td>
-                                                    <td>124233</td>
-                                                </tr>
-                                            
-                                            </tbody>
-                                        </table>
-                                    </div>
--->
 
 
                                 </div>

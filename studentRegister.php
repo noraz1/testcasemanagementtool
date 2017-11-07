@@ -68,71 +68,46 @@ alert ('failed to register. please try again!');
  <!-- Form Name -->
 <legend>Student Registeration</legend>
     <form method="post">
+
      <div class="form-group ">
-      <label class="control-label requiredField" for="firstname">
-       First Name
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
+      <label class="control-label requiredField" for="firstname"> First Name<span class="asteriskField"> * </span> </label>
       <input class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" type="text"/>
      </div>
+
      <div class="form-group ">
-      <label class="control-label requiredField" for="lastname">
-       Last Name
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
+      <label class="control-label requiredField" for="lastname"> Last Name <span class="asteriskField"> * </span> </label>
       <input class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" type="text"/>
      </div>
+
      <div class="form-group ">
-      <label class="control-label requiredField" for="matricnum">
-       Matric Number
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
+      <label class="control-label requiredField" for="matricnum"> Matric Number<span class="asteriskField"> *</span> </label>
       <input class="form-control" id="matricnum" name="matricnum" placeholder="Enter Matric Number" type="text"/>
      </div>
+
      <div class="form-group ">
-      <label class="control-label requiredField" for="username">
-       Username
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
+      <label class="control-label requiredField" for="username"> Username<span class="asteriskField"> * </span> </label>
       <input class="form-control" id="username" name="username" placeholder="Enter Username" type="text"/>
      </div>
+
      <div class="form-group ">
-      <label class="control-label requiredField" for="email">
-       Email
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
+      <label class="control-label requiredField" for="email">Email <span class="asteriskField"> * </span></label>
       <input class="form-control" id="email" name="email" placeholder="Enter Email" type="text"/>
      </div>
+
      <div class="form-group ">
-      <label class="control-label requiredField" for="password">
-       Password
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
+      <label class="control-label requiredField" for="password">Password<span class="asteriskField"> *</span></label>
       <input class="form-control" id="password" name="password" placeholder="Enter Password" type="text"/>
      </div>
+
      <div class="form-group ">
-      <label class="control-label requiredField" for="confirmpassword">
-       Confirm Password
-       <span class="asteriskField">
-        *
-       </span>
+      <label class="control-label requiredField" for="confirmpassword"> Confirm Password <span class="asteriskField">*</span>
       </label>
       <input class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Enter Confirm Password" type="text"/>
      </div>
+
      <div class="form-group">
       <div>
+      
       <!-- Button (Double) -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>
