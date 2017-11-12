@@ -14,6 +14,7 @@ if (isset($_POST["delete"])){
     $firstname =$_POST['firstname'];
     $lastname =$_POST['lastname'];
     $matricnum =$_POST['matricnum'];
+    $major =$_POST['major'];
     $username =$_POST['username'];
     $email =$_POST['email'];
     $password =$_POST['password'];
@@ -101,7 +102,7 @@ if (isset($_POST["delete"])){
 
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard.php">
+                        <a href="dashboard1.php">
                             <i class="pe-7s-graph"></i>
                             <p>All Project</p>
                         </a>
@@ -199,6 +200,11 @@ if (isset($_POST["delete"])){
      </div>
 
      <div class="form-group ">
+      <label class="control-label requiredField" for="matricnum"> Major<span class="asteriskField"> *</span> </label>
+      <input class="form-control" id="matricnum" name="matricnum" value="<?php echo $fetched_row['major']; ?>" type="text"/>
+     </div>
+
+     <div class="form-group ">
       <label class="control-label requiredField" for="username"> Username<span class="asteriskField"> * </span> </label>
       <input class="form-control" id="username" name="username" value="<?php echo $fetched_row['username']; ?>" type="text"/>
      </div>
@@ -210,13 +216,7 @@ if (isset($_POST["delete"])){
 
      <div class="form-group ">
       <label class="control-label requiredField" for="password">Password<span class="asteriskField"> *</span></label>
-      <input class="form-control" id="password" name="password" value="<?php echo $fetched_row['password']; ?>" type="text"/>
-     </div>
-
-     <div class="form-group ">
-      <label class="control-label requiredField" for="confirmpassword"> Confirm Password <span class="asteriskField">*</span>
-      </label>
-      <input class="form-control" id="confirmpassword" name="confirmpassword" value="<?php echo $fetched_row['confirmpassword']; ?>" type="text"/>
+      <input class="form-control" id="password" name="password" value="<?php echo $fetched_row['password']; ?>" type="password"/>
      </div>
 
      <div class="form-group">

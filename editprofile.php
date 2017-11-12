@@ -16,19 +16,34 @@ if (isset($_POST['update'])) {
     $firstname =$_POST['firstname'];
     $lastname =$_POST['lastname'];
     $matricnum =$_POST['matricnum'];
+    $major =$_POST['major'];
     $username =$_POST['username'];
     $email =$_POST['email'];
     $password =$_POST['password'];
-    $confirmpassword =$_POST['confirmpassword'];
+
    
    //INSERT
-   $res=mysqli_query($con,"UPDATE student SET firstname='$firstname', lastname='$lastname' , matricnum='$matricnum', username='$username', email='$email', password='$password',   confirmpassword='$confirmpassword'  WHERE matricnum=".$_SESSION['matricnum']);
+   $res=mysqli_query($con,"UPDATE student SET firstname='$firstname', lastname='$lastname' , matricnum='$matricnum', username='$username', email='$email', password='$password'  WHERE matricnum=".$_SESSION['matricnum']);
    header('Location: viewprofile.php');
-   
-   
-  
+ 
    }
 
+
+   $se="";
+   $net="";
+   $multi="";
+   $sc="";
+   if ($fetched_row['major']=='Software Engineering') {
+   $se = "checked";
+
+   }elseif ($fetched_row['major']=='Networking') {
+   $net = "checked";
+  
+   }elseif ($fetched_row['major']=='Multimedia') {
+   $multi = "checked";
+   }elseif ($fetched_row['major']=='System Computer') {
+    $sc = "checked";
+    }
 ?>
 
 
@@ -91,7 +106,7 @@ if (isset($_POST['update'])) {
 
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard.php">
+                        <a href="dashboard1.php">
                             <i class="pe-7s-graph"></i>
                             <p>All Project</p>
                         </a>
@@ -188,6 +203,27 @@ if (isset($_POST['update'])) {
     <input class="form-control" id="matricnum" name="matricnum" value="<?php echo $fetched_row['matricnum']; ?>" type="text"/>
    </div>
 
+<!--Radio group-->
+<label class="control-label" for="major">Major: </label><span class="asteriskField"> *</span>
+     <div class="form-group ">
+    <input name="major" type="radio" id="major" value="Software Engineering" <?php echo $se; ?>>
+    <label for="major">Software Engineering</label>
+</div>
+
+<div class="form-group">
+    <input name="major" type="radio" id="major" value="Networking" <?php echo $net; ?>>
+    <label for="major">Networking</label>
+</div>
+
+<div class="form-group">
+    <input name="major" type="radio" id="major" value="Multimedia" <?php echo $multi; ?>>
+    <label for="major">Multimedia</label>
+</div>
+<div class="form-group">
+    <input name="major" type="radio" id="major" value="System Computer"  <?php echo $sc; ?>>
+    <label for="major">System Computer</label>
+</div>
+<!--Radio group-->
    <div class="form-group ">
     <label class="control-label requiredField" for="username"> Username<span class="asteriskField"> * </span> </label>
     <input class="form-control" id="username" name="username" value="<?php echo $fetched_row['username']; ?>" type="text"/>
@@ -200,18 +236,34 @@ if (isset($_POST['update'])) {
 
    <div class="form-group ">
     <label class="control-label requiredField" for="password">Password<span class="asteriskField"> *</span></label>
-    <input class="form-control" id="password" name="password" value="<?php echo $fetched_row['password']; ?>" type="text"/>
+    <input class="form-control" id="password" name="password" value="<?php echo $fetched_row['password']; ?>" type="password"/>
    </div>
 
    <div class="form-group ">
     <label class="control-label requiredField" for="confirmpassword"> Confirm Password <span class="asteriskField">*</span>
     </label>
-    <input class="form-control" id="confirmpassword" name="confirmpassword" value="<?php echo $fetched_row['confirmpassword']; ?>" type="text"/>
+    <input class="form-control" id="confirmpassword" name="confirmpassword" value="<?php echo $fetched_row['password']; ?>" type="password"/>
    </div>
 
      <div class="form-group">
       <div>
-      
+
+      <script>
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirmpassword");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+</script>
       <!-- Button (Double) -->
       <div class="form-group">
       <label class="col-md-3 control-label"></label>

@@ -11,15 +11,17 @@ if (isset ($_POST['submit'])) {
   $firstname =$_POST['firstname'];
   $lastname =$_POST['lastname'];
   $matricnum =$_POST['matricnum'];
+  $major =$_POST['major'];
+  $groupclass =$_POST['groupclass'];
   $username =$_POST['username'];
   $email =$_POST['email'];
   $password =$_POST['password'];
-  $confirmpassword =$_POST['confirmpassword'];
+
 
   // insert
 
-  $query = " INSERT INTO student (firstname, lastname, matricnum, username, email, password, confirmpassword ) 
-  VALUES ('$firstname','$lastname', '$matricnum', '$username','$email', '$password', '$confirmpassword' )";
+  $query = " INSERT INTO student (firstname, lastname, matricnum, major, groupclass, username, email, password ) 
+  VALUES ('$firstname','$lastname', '$matricnum','$major', '$groupclass', '$username','$email', '$password' )";
 
   $result = mysqli_query($con,$query);
 
@@ -84,6 +86,33 @@ alert ('failed to register. please try again!');
       <input class="form-control" id="matricnum" name="matricnum" placeholder="Enter Matric Number" type="text"/>
      </div>
 
+<!--Radio group-->
+<label class="control-label" for="major">Major: </label><span class="asteriskField"> *</span>
+     <div class="form-group ">
+    <input name="major" type="radio" id="major" value="Software Engineering" checked>
+    <label for="major">Software Engineering</label>
+</div>
+
+<div class="form-group">
+    <input name="major" type="radio" id="major" value="Networking">
+    <label for="major">Networking</label>
+</div>
+
+<div class="form-group">
+    <input name="major" type="radio" id="major" value="Multimedia">
+    <label for="major">Multimedia</label>
+</div>
+<div class="form-group">
+    <input name="major" type="radio" id="major" value="System Computer">
+    <label for="major">System Computer</label>
+</div>
+<!--Radio group-->
+
+<div class="form-group ">
+      <label class="control-label requiredField" for="groupclass"> Group <span class="asteriskField"> *</span> </label>
+      <input class="form-control" id="groupclass" name="groupclass" placeholder="Enter Group Number     eg: 1" type="text"/>
+     </div>
+
      <div class="form-group ">
       <label class="control-label requiredField" for="username"> Username<span class="asteriskField"> * </span> </label>
       <input class="form-control" id="username" name="username" placeholder="Enter Username" type="text"/>
@@ -96,18 +125,34 @@ alert ('failed to register. please try again!');
 
      <div class="form-group ">
       <label class="control-label requiredField" for="password">Password<span class="asteriskField"> *</span></label>
-      <input class="form-control" id="password" name="password" placeholder="Enter Password" type="text"/>
+      <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password"/>
      </div>
 
      <div class="form-group ">
       <label class="control-label requiredField" for="confirmpassword"> Confirm Password <span class="asteriskField">*</span>
       </label>
-      <input class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Enter Confirm Password" type="text"/>
+      <input class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Enter Confirm Password" type="password"/>
      </div>
 
      <div class="form-group">
       <div>
-      
+
+<script>
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirmpassword");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+</script>
       <!-- Button (Double) -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>

@@ -32,9 +32,9 @@
                         </button>
 
                           <div class="logo">
-                            <a class="logo-wrap" href="#body">
-                                <img class="logo-img logo-img-main" src="img/logo.png" alt="FlameOnePage Logo">
-                                <img class="logo-img logo-img-active" src="img/logo-dark.png" alt="FlameOnePage Dark Logo">
+                            <a class="logo-wrap" href="index.php">
+                                <img class="logo-img logo-img-main" src="#" alt="TestCaseManagementTool" >
+                               
                             </a>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="menu-container">
                             <ul class="nav navbar-nav navbar-nav-right">
                                 <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="login.php">Student Login</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#about">Lecturer Login</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="lectlogin.php">Lecturer Login</a></li>
 								
                             </ul>
                         </div>
@@ -61,24 +61,18 @@
             </nav>
 			</header>
        
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <div class="container">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                </ol>
-            </div>
+   
 
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img class="img-responsive" src="assets/img/01.jpg" >
+                    <img class="img-responsive" src="assets/img/03.jpg" >
                     <div class="container">
                         <div class="carousel-centered">
-                            <div class="margin-b-40">
+                            <div class="margin-t-100" >
                                 <h1 class="carousel-title">Test Case Management Tool</h1>
-                                <p class="color-white">to assist undergraduate student</p>
+                                
                             </div>
-                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Details</a>
+                           
                         </div>
                     </div>
                 </div>
