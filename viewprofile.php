@@ -15,6 +15,7 @@ if (isset($_POST["delete"])){
     $lastname =$_POST['lastname'];
     $matricnum =$_POST['matricnum'];
     $major =$_POST['major'];
+    $group =$_POST['group'];
     $username =$_POST['username'];
     $email =$_POST['email'];
     $password =$_POST['password'];
@@ -102,7 +103,7 @@ if (isset($_POST["delete"])){
 
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard1.php">
+                        <a href="dashboard.php">
                             <i class="pe-7s-graph"></i>
                             <p>All Project</p>
                         </a>
@@ -110,7 +111,7 @@ if (isset($_POST["delete"])){
 
 
                     <li>
-                        <a href="index.php">
+                        <a href="overview.php">
                             <i class="pe-7s-note2"></i>
                             <p>Overview</p>
                         </a>
@@ -202,6 +203,11 @@ if (isset($_POST["delete"])){
      <div class="form-group ">
       <label class="control-label requiredField" for="matricnum"> Major<span class="asteriskField"> *</span> </label>
       <input class="form-control" id="matricnum" name="matricnum" value="<?php echo $fetched_row['major']; ?>" type="text"/>
+     </div>
+
+     <div class="form-group ">
+      <label class="control-label requiredField" for="groupclass"> Group <span class="asteriskField"> *</span> </label>
+      <input class="form-control" id="groupclass" name="groupclass" value="<?php echo $fetched_row['groupclass']; ?>" type="text"/>
      </div>
 
      <div class="form-group ">

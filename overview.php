@@ -3,6 +3,7 @@
 session_start();
 include_once 'conn.php';
 // check ade value post tak
+$id = $_REQUEST['id'];
 $matricnum =$_SESSION['matricnum'];
 if (isset ($_POST['submit'])) {
     // declare variable untuk store data dari input
@@ -125,35 +126,30 @@ Tip 2: you can also add an image using data-image tag
 
 
             <li>
-                <a href="index.php">
+                <a href="overview.php?id=<?php echo $id ?>">
                     <i class="pe-7s-note2"></i>
                     <p>Overview</p>
                 </a>
             </li>
             <li>
-            <a href="testplan.php">
+            <a href="testplan.php?id=<?php echo $id ?>">
                 <i class="pe-7s-news-paper"></i>
                 <p>Test Plan</p>
             </a>
         </li>
             <li>
-                <a href="testsuite.php">
+                <a href="testsuite.php?id=<?php echo $id ?>">
                     <i class="pe-7s-science"></i>
                     <p>Test Suite</p>
                 </a>
             </li>
             <li>
-                <a href="testrun.php">
+                <a href="testrun.php?id=<?php echo $id ?>">
                     <i class="pe-7s-map-marker"></i>
                     <p>Test Run</p>
                 </a>
             </li>
-            <li>
-                <a href="notifications.html">
-                    <i class="pe-7s-bell"></i>
-                    <p>Notifications</p>
-                </a>
-            </li>
+          
 <!--
             <li class="active-pro">
                 <a href="upgrade.html">
@@ -176,7 +172,7 @@ Tip 2: you can also add an image using data-image tag
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a class="navbar-brand" href="#">Dashboard</a>
+                <a class="navbar-brand" href="#">Overview</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
@@ -285,7 +281,7 @@ Tip 2: you can also add an image using data-image tag
 
     <tr>
     <td><?php echo $i; ?></td>
-    <td><?php echo $projectname; ?></td>
+    <td><a href="overview.php?id=<?php echo $projectid ?>"><?php echo $projectname; ?></a></td>
     <td><?php echo $projectdesc; ?></td>
     <td class= 'text-center'><a href="#edit<?php echo $projectid;?>"  data-toggle="modal" ><span class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button></a>
      <a href= "dashboard1.php?del=<?php echo $row['projectid']; ?>" ><button type='button' class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true' onclick="return confirm('Are you sure want to delete?')"></span></button></a></td>

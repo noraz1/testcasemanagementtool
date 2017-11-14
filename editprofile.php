@@ -17,13 +17,14 @@ if (isset($_POST['update'])) {
     $lastname =$_POST['lastname'];
     $matricnum =$_POST['matricnum'];
     $major =$_POST['major'];
+    $groupclass =$_POST['groupclass'];
     $username =$_POST['username'];
     $email =$_POST['email'];
     $password =$_POST['password'];
 
    
    //INSERT
-   $res=mysqli_query($con,"UPDATE student SET firstname='$firstname', lastname='$lastname' , matricnum='$matricnum', username='$username', email='$email', password='$password'  WHERE matricnum=".$_SESSION['matricnum']);
+   $res=mysqli_query($con,"UPDATE student SET firstname='$firstname', lastname='$lastname' , matricnum='$matricnum', major='$major', groupclass='$groupclass', username='$username', email='$email', password='$password'  WHERE matricnum=".$_SESSION['matricnum']);
    header('Location: viewprofile.php');
  
    }
@@ -106,7 +107,7 @@ if (isset($_POST['update'])) {
 
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard1.php">
+                        <a href="dashboard.php">
                             <i class="pe-7s-graph"></i>
                             <p>All Project</p>
                         </a>
@@ -224,6 +225,11 @@ if (isset($_POST['update'])) {
     <label for="major">System Computer</label>
 </div>
 <!--Radio group-->
+<div class="form-group ">
+    <label class="control-label requiredField" for="groupclass"> Group<span class="asteriskField"> * </span> </label>
+    <input class="form-control" id="groupclass" name="groupclass" value="<?php echo $fetched_row['groupclass']; ?>" type="text"/>
+   </div>
+
    <div class="form-group ">
     <label class="control-label requiredField" for="username"> Username<span class="asteriskField"> * </span> </label>
     <input class="form-control" id="username" name="username" value="<?php echo $fetched_row['username']; ?>" type="text"/>

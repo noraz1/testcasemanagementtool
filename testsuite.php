@@ -1,3 +1,13 @@
+
+<?php
+
+session_start();
+include_once 'conn.php';
+// dapat project id
+$id = $_GET['id'];
+$matricnum =$_SESSION['matricnum'];
+
+?>
 <!doctype html>
 <html lang="en">
 <head>

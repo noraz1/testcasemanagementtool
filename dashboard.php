@@ -3,14 +3,14 @@
 session_start();
 include_once 'conn.php';
 // check ade value post tak
-
+$matricnum =$_SESSION['matricnum'];
 if (isset ($_POST['submit'])) {
     // declare variable untuk store data dari input
-   
+    
     $projectname =$_POST['projectname'];
     $projectdesc =$_POST['projectdesc'];
   
-  $query= "INSERT INTO project (projectname, projectdesc ) VALUES ('$projectname', '$projectdesc') ";
+  $query= "INSERT INTO project (matricnum, projectname, projectdesc ) VALUES ('$matricnum','$projectname', '$projectdesc') ";
   
   $result= mysqli_query($con,$query);
   
@@ -18,7 +18,7 @@ if (isset ($_POST['submit'])) {
     {
   ?>
 <script type="text/javascript">
-  alert ('register success!');
+  alert ('Add project success!');
   
 </script>
 <?php
@@ -28,7 +28,7 @@ if (isset ($_POST['submit'])) {
   {
   ?>
 <script type="text/javascript">
-  alert ('failed to register. please try again!');
+  alert ('failed to add project. please try again!');
 </script>
 <?php
   }
@@ -37,24 +37,23 @@ if (isset ($_POST['submit'])) {
 
 $result1 = mysqli_query ($con,"SELECT * FROM project WHERE matricnum=".$_SESSION['matricnum']);
 
-// edit data
-if (isset($_GET['edit'])) {
-    $id = $_GET['edit'];
-    $update = true;
-    $record = mysqli_query($con, "SELECT * FROM project WHERE projectid=$id");
 
-    if (count($record) == 1 ) {
-        $n = mysqli_fetch_array($record);
-        $projectname1 = $n['projectname'];
-        $projectdesc1 = $n['projectdesc'];
-    }
+ //Update Items
+ if(isset($_POST['update'])){
+    $projectid = $_POST['projectid'];
+	$projectname = $_POST['projectname'];
+    $projectdesc = $_POST['projectdesc'];
+    
+     //INSERT
+   $res=mysqli_query($con,"UPDATE project SET projectname='$projectname', projectdesc='$projectdesc'  WHERE projectid=$projectid");
+   header('Location: dashboard.php');
 }
 
 // delete data
 if (isset($_GET['del'])) {
 	$id = $_GET['del'];
 	mysqli_query($con, "DELETE FROM project WHERE projectid=$id");
-	header('location: dashboard1.php');
+	header('location: dashboard.php');
 }
 
 ?>
@@ -65,7 +64,13 @@ if (isset($_GET['del'])) {
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/hilti.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  
+  
     <title>Test Case Management Tool</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -119,8 +124,8 @@ Tip 2: you can also add an image using data-image tag
             </li>
 
 
-            <li>
-                <a href="index.php">
+            <!-- <li>
+                <a href="overview.php">
                     <i class="pe-7s-note2"></i>
                     <p>Overview</p>
                 </a>
@@ -148,7 +153,7 @@ Tip 2: you can also add an image using data-image tag
                     <i class="pe-7s-bell"></i>
                     <p>Notifications</p>
                 </a>
-            </li>
+            </li> -->
 <!--
             <li class="active-pro">
                 <a href="upgrade.html">
@@ -176,25 +181,7 @@ Tip 2: you can also add an image using data-image tag
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
                 
-                    <!--<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-globe"></i>
-                            <b class="caret"></b>
-                            <span class="notification">5</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="notifications.html">Notification 1</a></li>
-                            <li><a href="notifications.html">Notification 2</a></li>
-                            <li><a href="notifications.html">Notification 3</a></li>
-                            <li><a href="notifications.html">Notification 4</a></li>
-                            <li><a href="notifications.html">Another notification</a></li>
-                        </ul>
-                    </li> -->
-                  <!--  <li>
-                        <a href="">
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </li> -->
+                 
                 </ul> 
 
                 <ul class="nav navbar-nav navbar-right">
@@ -298,14 +285,52 @@ Tip 2: you can also add an image using data-image tag
 
     <tr>
     <td><?php echo $i; ?></td>
-    <td><?php echo $projectname; ?></td>
+    <td><a href="overview.php?id=<?php echo $projectid ?>"><?php echo $projectname; ?></a></td>
     <td><?php echo $projectdesc; ?></td>
-    <td class= 'text-center'><a data-id="edit=<?php echo $row['projectid']; ?>"  onclick="document.getElementById('id02').style.display='block'"   class= 'edit_btn'><span class='glyphicon glyphicon-edit' aria-hidden='true'> </span></a>
-     <a href= "dashboard1.php?del=<?php echo $row['projectid']; ?>" class= 'del_btn'><span class='glyphicon glyphicon-trash' aria-hidden='true' onclick="return confirm('Are you sure?')" > </span></a></td>
+    <td class= 'text-center'><a href="#edit<?php echo $projectid;?>"  data-toggle="modal" ><span class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button></a>
+     <a href= "dashboard.php?del=<?php echo $row['projectid']; ?>" ><button type='button' class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true' onclick="return confirm('Are you sure want to delete?')"></span></button></a></td>
+
+     
     </tr>
+ 
+  <!-- edit modal -->
+<div id="edit<?php echo $projectid;?>" class="w3-modal" data-backdrop="false">
+<div class="w3-modal-content">
+    <div class="w3-container">
+      <span type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</span>
+   
+        <div class="modal-header"><h4 class="modal-title">Edit Project</h4></div>
+
+        <div class="modal-body">
+        <div class="row">
+            <form method="post">
+                <div class="form-group ">
+                 <!-- newly added field -->
+                    <input type="hidden" name="projectid" value="<?php echo $projectid; ?>">
+                    <label class="control-label requiredField" for="projectname"> Project Name <span class="asteriskField"> *</span> </label>
+                    <input class="form-control" id="projectname" name="projectname" value="<?php echo $projectname; ?>"  type="text"/>
+                </div>
+                    <div class="form-group ">
+                        <label class="control-label " for="projectdesc"> Project Description</label>
+                            <textarea class="form-control" cols="40" rows="10" id="projectdesc"  name="projectdesc" type="text"> <?php echo $projectdesc; ?></textarea> 
+                    </div>
+                        <div class="form-group">
+                            <div>
+                                <button class="btn btn-primary " name="update" type="submit" onclick="return confirm('Are you sure?')" > Update</button>
+                            </div>
+                        </div>
+            </form>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
     <?php
 
     $i++;
+
  }
  ?>
 </tbody>  
@@ -316,44 +341,14 @@ Tip 2: you can also add an image using data-image tag
 </div>
 </div>
 
-<!-- edit modal -->
-<div id="id02" class="w3-modal">
-            <div class="w3-modal-content">
-                <div class="w3-container">
-                  <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-               
-                    <div class="modal-header"><h4 class="modal-title">edit Project</h4></div>
+ 
 
-                    <div class="modal-body">
-                    <div class="row">
-                        <form method="post">
-                            <div class="form-group ">
-                                <label class="control-label requiredField" for="projectname"> Project Name <span class="asteriskField"> *</span> </label>
-                                <input class="form-control" id="projectname" name="projectname" value="<?php echo $projectname1; ?>"  type="text"/>
-                            </div>
-                                <div class="form-group ">
-                                    <label class="control-label " for="projectdesc"> Project Description</label>
-                                        <textarea class="form-control" cols="40" rows="10" id="projectdesc" value="<?php echo $projectdesc1; ?>" name="projectdesc" type="text"> </textarea> 
-                                </div>
-                                    <div class="form-group">
-                                        <div>
-                                            <button class="btn btn-primary " name="submit" type="submit"> Submit</button>
-                                        </div>
-                                    </div>
-                        </form>
-                    </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
 </body>
 
 
 <!--   Core JS Files   -->
-
-<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
