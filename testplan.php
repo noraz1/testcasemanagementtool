@@ -302,7 +302,7 @@ Tip 2: you can also add an image using data-image tag
    
 <!-- button view, update, delete -->
     <td class= 'text-center'>
-    <a href="#view<?php echo $tp_id;?>" data-toggle="modal"><button type='button' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></button></a>
+    <a href="viewtestplan.php?id=<?php echo $tp_id; ?>" data-toggle="modal"><button type='button' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></button></a>
     <a href="#edit<?php echo $tp_id;?>"  data-toggle="modal" ><span class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button></a>
     <a href= "testplan.php?del=<?php echo $tp_id; ?>" ><button type='button' class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true' onclick="return confirm('Are you sure want to delete?')"></span></button></a>
     </td>
