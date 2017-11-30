@@ -4,7 +4,10 @@ session_start();
 include_once 'conn.php';
 // dapat project id
 $id = $_GET['id'];
-$matricnum =$_SESSION['matricnum'];
+$studentid =$_SESSION['studentid'];
+
+$result=mysqli_query($con,"SELECT * FROM student WHERE studentid=".$_SESSION['studentid']);
+$fetched_row=mysqli_fetch_array($result);
 
 // create test plan
 if (isset ($_POST['submit'])) {
@@ -75,11 +78,36 @@ if (isset($_GET['del'])) {
 
 ?>
 
+<style>
+#parent {
+    overflow: hidden;
+    
+}
+.right {
+    float: right;
+    margin-right: 50px;
+    height: 50px;
+    margin-top: 20px;
+   
+}
+.left {
+    
+    padding: 10px;
+    float: left;
+    overflow: hidden;
+    height: 70px;
+    
+    
+   
+}
+
+</style>
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/hilti.png">
+    <link rel="icon" type="image/png" href="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -133,7 +161,7 @@ Tip 2: you can also add an image using data-image tag
         </div>
 
         <ul class="nav">
-            <li class="active">
+            <li >
                 <a href="dashboard.php">
                     <i class="pe-7s-graph"></i>
                     <p>All Project</p>
@@ -147,7 +175,7 @@ Tip 2: you can also add an image using data-image tag
                     <p>Overview</p>
                 </a>
             </li>
-            <li>
+            <li class="active">
             <a href="testplan.php?id=<?php echo $id ?>">
                 <i class="pe-7s-news-paper"></i>
                 <p>Test Plan</p>
@@ -193,9 +221,7 @@ Tip 2: you can also add an image using data-image tag
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="viewprofile.php">
-                       <?php 
-                       echo  $_SESSION['matricnum'];
-                       ?>
+                       <?php  echo "welcome    ".$fetched_row['username']."!"; ?>
                     </a>
                     </li>
                 
@@ -218,8 +244,22 @@ Tip 2: you can also add an image using data-image tag
        
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <h2>Test Plan List</h2>
-        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Add Test Plan</button>
+
+<div id="parent">
+     <div align="center" class="right">
+     <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Add Test Plan</button>
+     </div>
+
+        <div align="center" class="left">
+        <h1>Test Plan List</h1>
+        </div>
+
+    </div>
+    
+       
+
+   
+    
           
         <div id="id01" class="w3-modal">
             <div class="w3-modal-content">

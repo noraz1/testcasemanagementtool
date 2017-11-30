@@ -1,11 +1,60 @@
+<?php
+session_start();
+include_once 'conn.php';
+// check ade value post tak
+
+
+$classgroup = isset($_POST['classgroup']) ? $_POST['classgroup'] : false;
+if (($classgroup == '')) {
+  // echo htmlentities($_POST['classgroup'], ENT_QUOTES, "UTF-8");
+  $classgroup = 0;
+  
+} else {
+   
+  
+}
+
+$result3=mysqli_query($con,"SELECT * FROM lecturer WHERE lect_id=".$_SESSION['lect_id']);
+$fetched_row=mysqli_fetch_array($result3);
+?>
+
+
+
+
+<style>
+#parent {
+    overflow: hidden;
+    
+}
+.right {
+    float: right;
+    margin-right: 50px;
+    height: 40px;
+    margin-top: 20px;
+   
+}
+.left {
+    
+    padding: 10px;
+    float: left;
+    
+    overflow: hidden;
+    height: 60px;
+    
+    
+   
+}
+
+</style>
+
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/hilti.png">
+    <link rel="icon" type="image/png" href="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Hilti Connect Inventory List</title>
+        <title>Test Case Management Tool</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -33,7 +82,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="red" data-image="assets/img/hilti_irving_0047_1020x574.jpg">
+    <div class="sidebar" data-color="blue" data-image="assets/img/soft.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -41,14 +90,14 @@
       <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                   HILTI CONNECT
+                    TEST CASE MANAGEMENT TOOL
                 </a>
                 </div>
 
 
             <ul class="nav">
-                <li>
-                    <a href="dashboard.html">
+                <li class="active">
+                    <a href="lectdashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -60,7 +109,7 @@
                         <p>User Profile</p>
                     </a>
                 </li>
--->
+
                 <li>
                     <a href="devicelist.html">
                         <i class="pe-7s-note2"></i>
@@ -91,7 +140,7 @@
                         <p>Notifications</p>
                     </a>
                 </li>
-<!--
+
 				<li class="active-pro">
                     <a href="upgrade.html">
                         <i class="pe-7s-rocket"></i>
@@ -113,67 +162,28 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Inventory List</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                       
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret"></b>
-                                    <span class="notification">5</span>
-                              </a>
-
-                               <ul class="dropdown-menu">
-                                    <li><a href="notifications.html">Notification 1</a></li>
-
-                              <ul class="dropdown-menu">
-                                <li><a href="notifications.html">Notification 1</a></li>
-
-                                    <li><a href="notifications.html">Notification 2</a></li>
-                                    <li><a href="notifications.html">Notification 3</a></li>
-                                    <li><a href="notifications.html">Notification 4</a></li>
-                                    <li><a href="notifications.html">Another notification</a></li>
-
-                                </ul>
-
-                              </ul>
-
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                        
+                         
+                        </ul> 
+        
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#">
+                               <?php 
+                               echo "welcome    ".$fetched_row['lect_username']."!";
+                               ?>
                             </a>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="user.html">
-                               Account
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Dropdown
-                                    <b class="caret"></b>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href="home.html">
+                            </li>
+                        
+                            <li>
+                                <a onclick="return confirm('Are you sure want to logout?')"  href="logout.php">
                                 Log out
                             </a>
-                        </li>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -184,21 +194,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
+<!-- header -->
+<div id="parent">
+     <div align="center" class="right">
+     <!-- dropdown menu -->
+     <form method="post" >
+     <select name="classgroup">
+     <option value="0">Choose Class Group</option>
+       <option value="1">Group 1</option>
+       <option value="2">Group 2</option>
+       <option value="3">Group 3</option>
+       <option value="4">Group 4</option>
+       <option value="5">Group 5</option>
+     </select>
+     <input type="submit" class="w3-button w3-blue"   value="Submit"/>
+   </form>
+     <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Select group</button> -->
+     </div>
 
-<div class="w3-container">
-  <h2>W3.CSS Modal</h2>
-  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button>
+        <div align="center" class="left">
+        <h1>Test Plan List</h1>
+        </div>
 
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content">
-      <div class="w3-container">
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <p>Some text. Some text. Some text.</p>
-        <p>Some text. Some text. Some text.</p>
-      </div>
     </div>
-  </div>
-</div>
             
 </body>
 </html>
@@ -208,49 +226,58 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="header">
-                                <h4 class="title">Inventory List</h4>
-                                <p class="category">List of all items purchased from Hilti</p>
-                            </div>
+                            
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                        <th></th>
-                                        <th>Device ID</th>
-                                        <th>Device Name</th>
-                                        <th>Type</th>
-                                        <th>Weight</th>
-                                        <th>Connect Functionality</th>
-                                        <th>Purchase Date</th>
-                                        <th>Maintenance Frequency</th>
-                                        <th>Warranty Period</th>
-                                        <th>Warranty Ends</th>
-                                    </thead>
+                                        
+                                        <th>Number</th>
+                                        <th>Class Group</th>
+                                        <th>Matric Number</th>
+                                        <th>Test Plan</th>
+                                        <th>Mark</th>
+                                        <th>Check</th>
+                                        
                                     <tbody>
-                                        <tr>
-                                            <td> <img class="img-responsive" src="assets/img/tools/Drill.png" width="25"/></td>
-                                            <td>HC0211</td>
-                                            <td>Hilti Te boo-AVR</td>
-                                            <td>Drill</td>
-                                            <td>5.7 lb</td>
-                                            <td>Yes</td>
-                                            <td>03-June-2017</td>
-                                            <td>6 Months</td>
-                                            <td>3 Years</td>
-                                            <td>03-June-2020</td>
-                                        </tr>
-                                        <tr>
-                                            <td> <img class="img-responsive" src="assets/img/tools/Drill.png" width="25"/></td>
-                                            <td>HC0211</td>
-                                            <td>Hilti Te boo-AVR</td>
-                                            <td>Drill</td>
-                                            <td>5.7 lb</td>
-                                            <td>Yes</td>
-                                            <td>03-June-2017</td>
-                                            <td>6 Months</td>
-                                            <td>3 Years</td>
-                                            <td>03-June-2020</td>
-                                        </tr>
+
+                                    <?php
+
+                                    if (($classgroup !== 0)) {
+                                        $result = mysqli_query ($con,"SELECT * FROM tp_lecturer WHERE classgroup=$classgroup");
+                                        $i =1;
+                                        while ( $row= mysqli_fetch_array ($result)) {
+                                            $tpl_id= $row['tpl_id'];
+                                            $classgroup= $row['classgroup'];
+                                            $matricnum= $row['matricnum'];
+                                            $tpl_name = $row['tpl_name'];
+                                            
+                                            $result2 = mysqli_query ($con,"SELECT * FROM feedback WHERE tp_id=$tpl_id");
+                                            while ( $row2= mysqli_fetch_array ($result2)) {
+                                                $mark= $row2['mark'];
+                                           
+                                            ?>
+                                         <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td> <?php echo $classgroup;?></td>
+                                        <td> <?php echo $matricnum;?></td>
+                                        
+                                        <td><a href="lectviewtestplan.php?id=<?php echo $tpl_id ?>"><?php echo $tpl_name;?></a></td>
+                                        <td> <?php echo $mark;?></td>
+                                       
+                                        <td>  <button id="toggle" onclick="myFunction()">Unchecked yet!</button></td>
+                                    <?php
+                                              }
+                                        }
+
+                                     } else {
+                                        echo '<span style="color:#FF0000;text-align:center;">Class group is required!</span>';
+                                       
+                                     }
+                                   
+                                    
+                                    
+                                    ?>
+                                        
                                     </tbody>
                                 </table>
                             
@@ -260,6 +287,23 @@
                 </div>
             </div>
         </div>
+
+<!-- script for button change onclick -->
+        <script>
+
+            function myFunction() {
+                var change = document.getElementById("toggle");
+                if (change.innerHTML == "Unchecked yet!")
+                {
+                    change.innerHTML = "Checked!";
+                }
+                else {
+                    change.innerHTML = "Unchecked yet!";
+                }
+            }
+
+        </script>
+<!-- end script for button change onclick -->
 
         <footer class="footer">
             <div class="container-fluid">

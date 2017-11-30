@@ -1,11 +1,11 @@
 <?php
 session_start();
 include_once 'conn.php';
-if (!isset($_SESSION['matricnum'])){
+if (!isset($_SESSION['studentid'])){
 header("Location: index.php");
 }
 
-$result=mysqli_query($con,"SELECT * FROM student WHERE matricnum=".$_SESSION['matricnum']);
+$result=mysqli_query($con,"SELECT * FROM student WHERE studentid=".$_SESSION['studentid']);
 $fetched_row=mysqli_fetch_array($result);
 
 // delete user
@@ -15,7 +15,7 @@ if (isset($_POST["delete"])){
     $lastname =$_POST['lastname'];
     $matricnum =$_POST['matricnum'];
     $major =$_POST['major'];
-    $group =$_POST['group'];
+    $classgroup =$_POST['classgroup'];
     $username =$_POST['username'];
     $email =$_POST['email'];
     $password =$_POST['password'];
@@ -165,7 +165,7 @@ if (isset($_POST["delete"])){
 
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                            <a href="user.php"> <?php  echo  $_SESSION['matricnum']; ?> </a>
+                            <a href="#">   <?php  echo "welcome    ".$fetched_row['username']."!"; ?> </a>
                             </li>
                          
                             <li>
@@ -206,8 +206,8 @@ if (isset($_POST["delete"])){
      </div>
 
      <div class="form-group ">
-      <label class="control-label requiredField" for="groupclass"> Group <span class="asteriskField"> *</span> </label>
-      <input class="form-control" id="groupclass" name="groupclass" value="<?php echo $fetched_row['groupclass']; ?>" type="text"/>
+      <label class="control-label requiredField" for="classgroup"> Group <span class="asteriskField"> *</span> </label>
+      <input class="form-control" id="classgroup" name="classgroup" value="<?php echo $fetched_row['classgroup']; ?>" type="text"/>
      </div>
 
      <div class="form-group ">

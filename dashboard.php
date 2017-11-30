@@ -3,14 +3,18 @@
 session_start();
 include_once 'conn.php';
 // check ade value post tak
-$matricnum =$_SESSION['matricnum'];
+$studentid =$_SESSION['studentid'];
+
+$result3=mysqli_query($con,"SELECT * FROM student WHERE studentid=".$_SESSION['studentid']);
+$fetched_row=mysqli_fetch_array($result3);
+
 if (isset ($_POST['submit'])) {
     // declare variable untuk store data dari input
     
     $projectname =$_POST['projectname'];
     $projectdesc =$_POST['projectdesc'];
   
-  $query= "INSERT INTO project (matricnum, projectname, projectdesc ) VALUES ('$matricnum','$projectname', '$projectdesc') ";
+  $query= "INSERT INTO project (studentid, projectname, projectdesc ) VALUES ('$studentid','$projectname', '$projectdesc') ";
   
   $result= mysqli_query($con,$query);
   
@@ -35,7 +39,7 @@ if (isset ($_POST['submit'])) {
   
   }
 
-$result1 = mysqli_query ($con,"SELECT * FROM project WHERE matricnum=".$_SESSION['matricnum']);
+$result1 = mysqli_query ($con,"SELECT * FROM project WHERE studentid=".$_SESSION['studentid']);
 
 
  //Update Items
@@ -58,11 +62,36 @@ if (isset($_GET['del'])) {
 
 ?>
 
+<style>
+#parent {
+    overflow: hidden;
+    
+}
+.right {
+    float: right;
+    margin-right: 50px;
+    height: 50px;
+    margin-top: 20px;
+   
+}
+.left {
+    
+    padding: 10px;
+    float: left;
+    overflow: hidden;
+    height: 70px;
+    
+    
+   
+}
+
+</style>
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/hilti.png">
+    <link rel="icon" type="image/png" href="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -188,7 +217,7 @@ Tip 2: you can also add an image using data-image tag
                     <li>
                         <a href="viewprofile.php">
                        <?php 
-                       echo  $_SESSION['matricnum'];
+                       echo "welcome    ".$fetched_row['username']."!";
                        ?>
                     </a>
                     </li>
@@ -212,8 +241,19 @@ Tip 2: you can also add an image using data-image tag
        
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <h2>Project List</h2>
-        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Add Project</button>
+
+<div id="parent">
+     <div align="center" class="right">
+     <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Add Project</button>
+     </div>
+
+        <div align="center" class="left">
+        <h1>Project List</h1>
+        </div>
+
+    </div>
+    
+       
           
         <div id="id01" class="w3-modal">
             <div class="w3-modal-content">
@@ -285,7 +325,7 @@ Tip 2: you can also add an image using data-image tag
 
     <tr>
     <td><?php echo $i; ?></td>
-    <td><a href="overview.php?id=<?php echo $projectid ?>"><?php echo $projectname; ?></a></td>
+    <td><a href="testplan.php?id=<?php echo $projectid ?>"><?php echo $projectname; ?></a></td>
     <td><?php echo $projectdesc; ?></td>
     <td class= 'text-center'><a href="#edit<?php echo $projectid;?>"  data-toggle="modal" ><span class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button></a>
      <a href= "dashboard.php?del=<?php echo $row['projectid']; ?>" ><button type='button' class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true' onclick="return confirm('Are you sure want to delete?')"></span></button></a></td>

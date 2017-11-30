@@ -284,7 +284,7 @@ Tip 2: you can also add an image using data-image tag
     <td><a href="overview.php?id=<?php echo $projectid ?>"><?php echo $projectname; ?></a></td>
     <td><?php echo $projectdesc; ?></td>
     <td class= 'text-center'><a href="#edit<?php echo $projectid;?>"  data-toggle="modal" ><span class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></button></a>
-     <a href= "dashboard1.php?del=<?php echo $row['projectid']; ?>" ><button type='button' class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true' onclick="return confirm('Are you sure want to delete?')"></span></button></a></td>
+     <a href= "dashboard.php?del=<?php echo $row['projectid']; ?>" ><button type='button' class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true' onclick="return confirm('Are you sure want to delete?')"></span></button></a></td>
 
      
     </tr>

@@ -5,15 +5,15 @@ include_once 'conn.php';
 
 if(isset($_POST['submit']))
 {
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['lect_username'];
+$password = $_POST['lect_password'];
 
-$res = mysql_query("SELECT * FROM lecturer WHERE username = '$username'")
+$res = mysqli_query($con,"SELECT * FROM lecturer WHERE lect_username = '$username'")
 or die (" failed to query database" .mysql_error());
 
-$row = mysql_fetch_array($res);
+$row = mysqli_fetch_array($res);
 
-if ($row['username'] == $username && $row['password'] == $password)  {
+if ($row['lect_username'] == $username && $row['lect_password'] == $password)  {
 
 ?>
   <script type="text/javascript">
@@ -21,8 +21,8 @@ if ($row['username'] == $username && $row['password'] == $password)  {
   </script>
 
   <?php
-  $_SESSION['matricnum'] = $row['matricnum'];
- header("Location: lectindex.php");
+  $_SESSION['lect_id'] = $row['lect_id'];
+ header("Location: lectdashboard.php");
 }
 else
 {
@@ -113,10 +113,10 @@ input[type="password"] {
         <hr class="colorgraph"><br>
         <label><b>Username</b></label>
 
-        <input type="text" class="form-control" name="username" placeholder="Enter Username" required="" autofocus="" />
+        <input type="text" class="form-control" name="lect_username" placeholder="Enter Username" required="" autofocus="" />
         
         <label><b>Password</b></label>
-        <input type="password" class="form-control" name="password" placeholder="Enter Password" value="" required=""/>      
+        <input type="password" class="form-control" name="lect_password" placeholder="Enter Password" value="" required=""/>      
          <button type="submit" name="submit">Login</button>
         <div class="container" style="background-color:#f1f1f1">
     

@@ -33,6 +33,7 @@ if (isset ($_POST['submit'])) {
 
 <script type="text/javascript">
 alert ('register success!');
+header('Location: index.php');
 </script>
 
 <?php
@@ -159,7 +160,7 @@ confirm_password.onkeyup = validatePassword;
   <div class="col-md-8">
 
     <button id="submit" name="submit" class="btn btn-success" href="login.php">Sign In</button>
-    <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+    <button id="cancel" name="cancel"  href="index.php" class="btn btn-danger">Cancel</button>
   </div>
 </div>
       </div>
