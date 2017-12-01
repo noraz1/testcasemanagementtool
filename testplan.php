@@ -85,9 +85,9 @@ if (isset($_GET['del'])) {
 }
 .right {
     float: right;
-    margin-right: 50px;
+   
     height: 50px;
-    margin-top: 20px;
+    margin-top: 60px;
    
 }
 .left {
@@ -95,8 +95,10 @@ if (isset($_GET['del'])) {
     padding: 10px;
     float: left;
     overflow: hidden;
-    height: 70px;
+    height: 125px;
     
+    
+   
     
    
 }
@@ -252,6 +254,8 @@ Tip 2: you can also add an image using data-image tag
 
         <div align="center" class="left">
         <h1>Test Plan List</h1>
+        <p>A test plan can be used to record the overall testing strategy </p>
+        <p>and is where you can outline the objectives and scope of testing.</p>
         </div>
 
     </div>

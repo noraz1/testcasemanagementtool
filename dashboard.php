@@ -153,44 +153,6 @@ Tip 2: you can also add an image using data-image tag
             </li>
 
 
-            <!-- <li>
-                <a href="overview.php">
-                    <i class="pe-7s-note2"></i>
-                    <p>Overview</p>
-                </a>
-            </li>
-            <li>
-            <a href="testplan.php">
-                <i class="pe-7s-news-paper"></i>
-                <p>Test Plan</p>
-            </a>
-        </li>
-            <li>
-                <a href="testsuite.php">
-                    <i class="pe-7s-science"></i>
-                    <p>Test Suite</p>
-                </a>
-            </li>
-            <li>
-                <a href="testrun.php">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Test Run</p>
-                </a>
-            </li>
-            <li>
-                <a href="notifications.html">
-                    <i class="pe-7s-bell"></i>
-                    <p>Notifications</p>
-                </a>
-            </li> -->
-<!--
-            <li class="active-pro">
-                <a href="upgrade.html">
-                    <i class="pe-7s-rocket"></i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li>
--->
         </ul>
     </div>
 </div>
@@ -380,8 +342,6 @@ Tip 2: you can also add an image using data-image tag
 </div>
 </div>
 </div>
-
- 
 
 
 
