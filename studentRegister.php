@@ -121,7 +121,7 @@ alert ('failed to register. please try again!');
 
      <div class="form-group ">
       <label class="control-label requiredField" for="email">Email <span class="asteriskField"> * </span></label>
-      <input class="form-control" id="email" name="email" placeholder="Enter Email" type="text"/>
+      <input class="form-control" id="email" name="email" placeholder="Enter Email" type="email"/>
      </div>
 
      <div class="form-group ">

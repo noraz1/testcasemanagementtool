@@ -17,9 +17,11 @@ if(isset($_POST['submit'])){
     $lect_feedback = $_POST['lect_feedback'];
 
     $res=mysqli_query($con,"UPDATE feedback SET mark='$mark',lect_feedback='$lect_feedback' WHERE tp_id=$id");
-    header("location:".$_SERVER['HTTP_REFERER']);
+   
 
 }
+
+
 
 ?>
 
@@ -149,7 +151,7 @@ div.container {
             </div>
             <div class="form-group">
             <div>
-                 <button class="btn btn-primary " name="submit" type="submit"> Submit</button>
+                 <button class="btn btn-primary " name="submit" onclick="return confirm('Are you sure?')" type="submit"> Submit</button>
             </div>
             </div>
         </form>

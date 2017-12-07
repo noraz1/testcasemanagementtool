@@ -47,9 +47,19 @@ if (isset ($_POST['submit'])) {
   }
 
 $result1 = mysqli_query ($con,"SELECT * FROM testcase WHERE ts_id=$id");
+//$fetched_row1=mysqli_fetch_array($result1);
 
 
- //update test plan
+
+// delete data
+if (isset($_GET['del'])) {
+	$tc_id = $_GET['del'];
+	mysqli_query($con, "DELETE FROM testcase WHERE tc_id=$tc_id");
+    header("location:".$_SERVER['HTTP_REFERER']);
+    exit();
+}
+
+ //update test case
  if(isset($_POST['save'])){
     $tc_id = $_POST['tc_id'];
     $tc_title =$_POST['tc_title'];
@@ -68,13 +78,8 @@ $result1 = mysqli_query ($con,"SELECT * FROM testcase WHERE ts_id=$id");
    header("location:".$_SERVER['HTTP_REFERER']);
 }
 
-// delete data
-if (isset($_GET['del'])) {
-	$tc_id = $_GET['del'];
-	mysqli_query($con, "DELETE FROM testcase WHERE tc_id=$tc_id");
-    header("location:".$_SERVER['HTTP_REFERER']);
-    exit();
-}
+
+
 
 ?>
 
@@ -311,50 +316,59 @@ Tip 2: you can also add an image using data-image tag
        A list of steps to perform along with any sample data.
       </span>
      </div>
+
+     <!-- radio button -->
+     <label class="control-label" for="tc_level">Test Case Level: </label>
      <div class="form-group ">
-      <label class="control-label " for="tc_level">
-       Test case level
-      </label>
-      <select class="select form-control" id="tc_level" name="tc_level">
-       <option value="High">
-        High
-       </option>
-       <option value="Medium">
-        Medium
-       </option>
-       <option value="Low">
-        Low
-       </option>
-      </select>
-      <span class="help-block" id="hint_tc_level">
+    <input name="tc_level" type="radio" id="tc_level" value="High" checked>
+    <label for="tc_level">High</label>
+</div>
+
+<div class="form-group">
+    <input name="tc_level" type="radio" id="tc_level" value="Medium">
+    <label for="tc_risk">Medium</label>
+</div>
+
+<div class="form-group">
+    <input name="tc_level" type="radio" id="tc_level" value="Low">
+    <label for="tc_level">Low</label>
+    <span class="help-block" id="tc_risk">
        The priority level of test case.
       </span>
-     </div>
+</div>
+
+<!--Radio group-->
+
      <div class="form-group ">
       <label class="control-label " for="tc_risk">
        Risk
       </label>
       <textarea class="form-control" cols="40" id="tc_risk" name="tc_risk" rows="10"></textarea>
-      <span class="help-block" id="hint_tc_risk">
+      <span class="help-block" id="tc_risk">
        Expected risk that will occur.
       </span>
      </div>
+
+   <!-- radio button -->
+   <label class="control-label" for="tc_level_risk">Level of risk: </label>
      <div class="form-group ">
-      <label class="control-label " for="tc_level_risk">
-       Level of risk
-      </label>
-      <select class="select form-control" id="tc_level_risk" name="tc_level_risk">
-       <option value="High">
-        High
-       </option>
-       <option value="Moderate">
-        Moderate
-       </option>
-       <option value="Low">
-        Low
-       </option>
-      </select>
-     </div>
+    <input name="tc_level_risk" type="radio" id="tc_level_risk" value="High" checked>
+    <label for="tc_level_risk">High</label>
+</div>
+
+<div class="form-group">
+    <input name="tc_level_risk" type="radio" id="tc_level_risk" value="Medium">
+    <label for="tc_level_risk">Medium</label>
+</div>
+
+<div class="form-group">
+    <input name="tc_level_risk" type="radio" id="tc_level_risk" value="Low">
+    <label for="tc_level_risk">Low</label>
+
+</div>
+
+<!--Radio group-->
+
      <div class="form-group ">
       <label class="control-label " for="tc_expected_result">
        Expected result
@@ -402,9 +416,9 @@ Tip 2: you can also add an image using data-image tag
 <table class="table table-hover table-bordered">
 <thread>    
     <tr>
-        <th>Number</th>
+        <th>Test Case</th>
         <th>Test Plan Name</th>
-         <th>View/Edit/Delete</th>
+         <th>Edit/Delete</th>
    
     </tr>
 </thread>  
@@ -421,11 +435,39 @@ Tip 2: you can also add an image using data-image tag
     $tc_risk =$row['tc_risk'];
     $tc_level_risk =$row['tc_level_risk'];
     $tc_expected_result =$row['tc_expected_result'];
+
+    // test case level
+$High="";
+$Medium="";
+$Low="";
+if ($row['tc_level']=='High') {
+    $High = "checked";
+
+}elseif ($row['tc_level']=='Medium') {
+    $Medium = "checked";
+
+}elseif ($row['tc_level']=='Low') {
+    $Low = "checked";
+}
+ 
+// risk level
+$RHigh="";
+$RMedium="";
+$RLow="";
+if ($row['tc_level_risk']=='High') {
+    $RHigh = "checked";
+
+}elseif ($row['tc_level_risk']=='Medium') {
+    $RMedium = "checked";
+
+}elseif ($row['tc_level_risk']=='Low') {
+    $RLow = "checked";
+}
        
 ?>
 
     <tr>
-    <td><?php echo $i; ?></td>
+    <td><?php echo"TC".$i; ?></td>
     <td> <?php echo $tc_title;?></td>
    
 <!-- button view, update, delete -->
@@ -484,25 +526,27 @@ Tip 2: you can also add an image using data-image tag
        A list of steps to perform along with any sample data.
       </span>
      </div>
-     <div class="form-group ">
-      <label class="control-label " for="tc_level">
-       Test case level
-      </label>
-      <select class="select form-control" id="tc_level" name="tc_level">
-       <option value="High">
-        High
-       </option>
-       <option value="Medium">
-        Medium
-       </option>
-       <option value="Low">
-        Low
-       </option>
-      </select>
-      <span class="help-block" id="hint_tc_level">
-       The priority level of test case.
-      </span>
-     </div>
+    <!-- radio button -->
+    <label class="control-label" for="tc_level">Test Case Level: </label>
+    <div class="form-group ">
+   <input name="tc_level" type="radio" id="tc_level" value="High" <?php echo $High; ?>>
+   <label for="tc_level">High</label>
+</div>
+
+<div class="form-group">
+   <input name="tc_level" type="radio" id="tc_level" value="Medium" <?php echo $Medium; ?>>
+   <label for="tc_risk">Medium</label>
+</div>
+
+<div class="form-group">
+   <input name="tc_level" type="radio" id="tc_level" value="Low" <?php echo $Low; ?>>
+   <label for="tc_level">Low</label>
+   <span class="help-block" id="tc_risk">
+      The priority level of test case.
+     </span>
+</div>
+
+<!--Radio group-->
      <div class="form-group ">
       <label class="control-label " for="tc_risk">
        Risk
@@ -512,22 +556,25 @@ Tip 2: you can also add an image using data-image tag
        Expected risk that will occur.
       </span>
      </div>
-     <div class="form-group ">
-      <label class="control-label " for="tc_level_risk">
-       Level of risk
-      </label>
-      <select class="select form-control" id="tc_level_risk" name="tc_level_risk">
-       <option value="High">
-        High
-       </option>
-       <option value="Moderate">
-        Moderate
-       </option>
-       <option value="Low">
-        Low
-       </option>
-      </select>
-     </div>
+    <!-- radio button -->
+   <label class="control-label" for="tc_level_risk">Level of risk: </label>
+   <div class="form-group ">
+  <input name="tc_level_risk" type="radio" id="tc_level_risk" value="High"  <?php echo $RHigh; ?>>
+  <label for="tc_level_risk">High</label>
+</div>
+
+<div class="form-group">
+  <input name="tc_level_risk" type="radio" id="tc_level_risk" value="Medium" <?php echo $RMedium; ?>>
+  <label for="tc_level_risk">Medium</label>
+</div>
+
+<div class="form-group">
+  <input name="tc_level_risk" type="radio" id="tc_level_risk" value="Low" <?php echo $RLow; ?>>
+  <label for="tc_level_risk">Low</label>
+
+</div>
+
+<!--Radio group-->
      <div class="form-group ">
       <label class="control-label " for="tc_expected_result">
        Expected result
@@ -539,7 +586,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group">
       <div>
-       <button class="btn btn-primary " name="submit" type="submit">
+       <button class="btn btn-primary " name="save" type="submit">
         Submit
        </button>
       </div>

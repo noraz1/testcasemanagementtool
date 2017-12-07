@@ -109,7 +109,7 @@ if (isset($_POST["delete"])){
                         </a>
                     </li>
 
-
+<!-- 
                     <li>
                         <a href="overview.php">
                             <i class="pe-7s-note2"></i>
@@ -139,7 +139,7 @@ if (isset($_POST["delete"])){
                             <i class="pe-7s-bell"></i>
                             <p>Notifications</p>
                         </a>
-                    </li>
+                    </li> -->
 
                 </ul>
             </div>

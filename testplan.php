@@ -171,12 +171,12 @@ Tip 2: you can also add an image using data-image tag
             </li>
 
 
-            <li>
+            <!-- <li>
                 <a href="overview.php?id=<?php echo $id ?>">
                     <i class="pe-7s-note2"></i>
                     <p>Overview</p>
                 </a>
-            </li>
+            </li> -->
             <li class="active">
             <a href="testplan.php?id=<?php echo $id ?>">
                 <i class="pe-7s-news-paper"></i>
@@ -360,7 +360,7 @@ Tip 2: you can also add an image using data-image tag
     <div class="w3-container">
       <span type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</span>
    
-        <div class="modal-header"><h4 class="modal-title">Edit Project</h4></div>
+        <div class="modal-header"><h4 class="modal-title">Edit Test Plan</h4></div>
 
         <div class="modal-body">
         <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
@@ -474,7 +474,7 @@ Tip 2: you can also add an image using data-image tag
       <label class="control-label " for="tp_schedule">
        Schedule
       </label>
-      <textarea class="form-control" cols="40" id="tp_schedule" name="tp_risk" rows="7"><?php echo $tp_risk; ?></textarea>
+      <textarea class="form-control" cols="40" id="tp_schedule" name="tp_schedule" rows="7"><?php echo $tp_schedule; ?></textarea>
       <span class="help-block" id="hint_tp_schedule">
        Provide a realistic estimate to the time required.
       </span>

@@ -8,12 +8,17 @@ $studentid =$_SESSION['studentid'];
 //read testplan
 $result=mysqli_query($con,"SELECT * FROM testplan WHERE tp_id=$id");
 $fetched_row=mysqli_fetch_array($result);
+$projectid= $fetched_row['projectid'];
+
+// read project description
+$result2=mysqli_query($con,"SELECT * FROM project WHERE projectid=$projectid");
+$fetched_row2=mysqli_fetch_array($result2);
+$projectdesc= $fetched_row2['projectdesc'];
 
 //feedback
-$result1=mysqli_query($con,"SELECT * FROM feedback WHERE tp_id=$id");
+$result1=mysqli_query($con,"SELECT * FROM tp_lecturer WHERE tpl_id=$id");
 $fetched_row1=mysqli_fetch_array($result1);
-$feedbackid= $fetched_row1['feedback_id'];
-$feedback= $fetched_row1['lect_feedback'];
+$feedback= $fetched_row1['feedback'];
 
 //student group
 $result4=mysqli_query($con,"SELECT * FROM student WHERE studentid=".$_SESSION['studentid']);
@@ -120,7 +125,9 @@ function myFunction() {
             $result2= mysqli_query($con,$query);
            mysqli_query($con, "UPDATE tp_lecturer SET classgroup='$classgroup' WHERE tpl_id=$id");
            mysqli_query($con, "UPDATE tp_lecturer SET matricnum='$matricnum' WHERE tpl_id=$id");
-         // $query=" INSERT INTO tp_lecturer SELECT * FROM testplan WHERE tp_id=$id";
+           mysqli_query($con, "UPDATE tp_lecturer SET projectdesc='$projectdesc' WHERE tpl_id=$id");
+           mysqli_query($con, "INSERT INTO tp_lecturer SET projectdesc='$projectdesc' WHERE tpl_id=$id");
+          
            
 
             

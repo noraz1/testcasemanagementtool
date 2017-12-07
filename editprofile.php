@@ -114,7 +114,7 @@ if (isset($_POST['update'])) {
                     </li>
 
 
-                    <li>
+                    <!-- <li>
                         <a href="index.php">
                             <i class="pe-7s-note2"></i>
                             <p>Overview</p>
@@ -143,7 +143,7 @@ if (isset($_POST['update'])) {
                             <i class="pe-7s-bell"></i>
                             <p>Notifications</p>
                         </a>
-                    </li>
+                    </li> -->
 
                 </ul>
             </div>
@@ -237,7 +237,7 @@ if (isset($_POST['update'])) {
 
    <div class="form-group ">
     <label class="control-label requiredField" for="email">Email <span class="asteriskField"> * </span></label>
-    <input class="form-control" id="email" name="email" value="<?php echo $fetched_row['email']; ?>" type="text"/>
+    <input class="form-control" id="email" name="email"  value="<?php echo $fetched_row['email']; ?>" type="email"/>
    </div>
 
    <div class="form-group ">
