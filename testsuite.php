@@ -155,12 +155,12 @@ Tip 2: you can also add an image using data-image tag
             </li>
 
 
-            <li>
+            <!-- <li>
                 <a href="overview.php?id=<?php echo $id ?>">
                     <i class="pe-7s-note2"></i>
                     <p>Overview</p>
                 </a>
-            </li>
+            </li> -->
             <li >
             <a href="testplan.php?id=<?php echo $id ?>">
                 <i class="pe-7s-news-paper"></i>
@@ -305,6 +305,7 @@ Tip 2: you can also add an image using data-image tag
 <?php
  $i =1;
  while ( $row= mysqli_fetch_array ($result1)) {
+    $projectid= $row['projectid'];
     $ts_id= $row['ts_id'];
     $ts_name= $row['ts_name'];
    
@@ -313,7 +314,7 @@ Tip 2: you can also add an image using data-image tag
 
     <tr>
     <td><?php echo $i; ?></td>
-    <td> <a href="testcase.php?id=<?php echo $ts_id ?>"><?php echo $ts_name;?></td>
+    <td> <a href="testcase.php?id=<?php echo $projectid ?>&tsid=<?php echo $ts_id ?>"><?php echo $ts_name;?></td>
    
 <!-- button view, update, delete -->
     <td class= 'text-center'>

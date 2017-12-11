@@ -4,6 +4,7 @@ session_start();
 include_once 'conn.php';
 // dapat project id
 $id = $_GET['id'];
+$ts_id = $_GET['tsid'];
 $studentid =$_SESSION['studentid'];
 
 $result=mysqli_query($con,"SELECT * FROM student WHERE studentid=".$_SESSION['studentid']);
@@ -21,7 +22,7 @@ if (isset ($_POST['submit'])) {
     $tc_expected_result =$_POST['tc_expected_result'];
     
   $query= "INSERT INTO testcase (ts_id, tc_title, tc_desc,tc_test_step,tc_level,tc_risk,tc_level_risk,tc_expected_result) 
-  VALUES ('$id','$tc_title',' $tc_desc',' $tc_test_step',' $tc_level',' $tc_risk',' $tc_level_risk',' $tc_expected_result') ";
+  VALUES ('$ts_id','$tc_title',' $tc_desc',' $tc_test_step',' $tc_level',' $tc_risk',' $tc_level_risk',' $tc_expected_result') ";
   
   $result= mysqli_query($con,$query);
   
@@ -46,7 +47,7 @@ if (isset ($_POST['submit'])) {
   
   }
 
-$result1 = mysqli_query ($con,"SELECT * FROM testcase WHERE ts_id=$id");
+$result1 = mysqli_query ($con,"SELECT * FROM testcase WHERE ts_id=$ts_id");
 //$fetched_row1=mysqli_fetch_array($result1);
 
 
@@ -64,6 +65,8 @@ if (isset($_GET['del'])) {
     $tc_id = $_POST['tc_id'];
     $tc_title =$_POST['tc_title'];
     $tc_desc =$_POST['tc_desc'];
+    $tc_precondition =$_POST['tc_precondition'];
+    $tc_input =$_POST['tc_input'];    
     $tc_test_step =$_POST['tc_test_step'];
     $tc_level =$_POST['tc_level'];
     $tc_risk =$_POST['tc_risk'];
@@ -71,7 +74,7 @@ if (isset($_GET['del'])) {
     $tc_expected_result =$_POST['tc_expected_result'];
     
      //INSERT
-   $res=mysqli_query($con,"UPDATE testcase SET tc_title='$tc_title',tc_desc='$tc_desc',tc_test_step='$tc_test_step',
+   $res=mysqli_query($con,"UPDATE testcase SET tc_title='$tc_title',tc_desc='$tc_desc',tc_precondition='$tc_precondition',tc_input='$tc_input',tc_test_step='$tc_test_step',
    tc_level='$tc_level',tc_risk='$tc_risk',tc_level_risk='$tc_level_risk',
    tc_expected_result='$tc_expected_result' WHERE tc_id=$tc_id");
    
@@ -174,12 +177,12 @@ Tip 2: you can also add an image using data-image tag
             </li>
 
 
-            <li>
+            <!-- <li>
                 <a href="overview.php?id=<?php echo $id ?>">
                     <i class="pe-7s-note2"></i>
                     <p>Overview</p>
                 </a>
-            </li>
+            </li> -->
             <li >
             <a href="testplan.php?id=<?php echo $id ?>">
                 <i class="pe-7s-news-paper"></i>
@@ -417,7 +420,7 @@ Tip 2: you can also add an image using data-image tag
 <thread>    
     <tr>
         <th>Test Case</th>
-        <th>Test Plan Name</th>
+        <th>Test Case Name</th>
          <th>Edit/Delete</th>
    
     </tr>
@@ -430,6 +433,8 @@ Tip 2: you can also add an image using data-image tag
     $tc_id = $row['tc_id'];
     $tc_title =$row['tc_title'];
     $tc_desc =$row['tc_desc'];
+    $tc_precondition =$row['tc_precondition'];
+    $tc_input =$row['tc_input'];
     $tc_test_step =$row['tc_test_step'];
     $tc_level =$row['tc_level'];
     $tc_risk =$row['tc_risk'];
@@ -515,13 +520,25 @@ if ($row['tc_level_risk']=='High') {
       <label class="control-label " for="tc_desc">
        Description
       </label>
-      <textarea class="form-control" cols="40" id="tc_desc" name="tc_desc" rows="10" ><?php echo $tc_title; ?></textarea>
+      <textarea class="form-control" cols="40" id="tc_desc" name="tc_desc" rows="10" ><?php echo $tc_desc; ?></textarea>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="tc_precondition">
+       Pre-Condition
+      </label>
+      <textarea class="form-control" cols="40" id="tc_precondition" name="tc_precondition" rows="10" ><?php echo $tc_precondition; ?></textarea>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="tc_input">
+       Input
+      </label>
+      <textarea class="form-control" cols="40" id="tc_input" name="tc_input" rows="10" ><?php echo $tc_input; ?></textarea>
      </div>
      <div class="form-group ">
       <label class="control-label " for="tc_test_step">
        Test steps
       </label>
-      <textarea class="form-control" cols="40" id="tc_test_step" name="tc_test_step" rows="10" ><?php echo $tc_title; ?></textarea>
+      <textarea class="form-control" cols="40" id="tc_test_step" name="tc_test_step" rows="10" ><?php echo $tc_test_step; ?></textarea>
       <span class="help-block" id="hint_tc_test_step">
        A list of steps to perform along with any sample data.
       </span>
@@ -613,8 +630,10 @@ if ($row['tc_level_risk']=='High') {
 </table>
 </div> 
 </div> 
+<a style="position: relative; left: 78%;" href="testcasereport.php?id=<?php echo $id ?>&tsid=<?php echo $ts_id; ?>" class="w3-button w3-blue">View Report</a>
+</div> 
 </div>
-</div>
+
 </div>
 
  

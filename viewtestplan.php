@@ -108,9 +108,7 @@ function myFunction() {
              <?php
              // delete old data in tpl
             mysqli_query($con, "DELETE FROM tp_lecturer WHERE tpl_id=$id");
-            ?>
-            alert ('are you sure?');
-           <?php
+            
            // insert new data
          //  $query = " INSERT INTO tp_lecturer (tpl_id, projectid, tpl_name, tpl_introduction, tpl_test_item, tpl_features_to_be_tested, tpl_features_not_to_be_tested, tpl_approach,
           // tpl_item_passfail_criteria, tpl_testing_task, tpl_test_deliverable, tpl_environmental_need,
@@ -132,7 +130,7 @@ function myFunction() {
 
             
             ?>
-            alert ('you are successfully submit this test plan to lecturer!');
+           alert ('you are successfully submit this test plan to lecturer!');
             
             
 
@@ -147,30 +145,32 @@ function myFunction() {
 
 <!-- report -->
         <div align="center" class="left">
-            <h1> Test Plan Report </h1>
+         
         </div>
 
     </div>
   
             <div id="TestPlan" padding-left:" 2cm;"  style=" left:50px; right :50px; width:1200px;" class="container">
         
-            <p><span style="font-size: 14pt;" name="tp_name"><strong>Test plan for: <?php echo $fetched_row['tp_name']; ?></strong></span></p>
-            <p><span style="font-size: 13pt;"><strong>Introduction: </strong><?php echo $fetched_row['tp_introduction']; ?></span></p>
-            <p><span style="font-size: 13pt;"><strong>People:&nbsp;</strong><?php echo $fetched_row['tp_responsibilities']; ?></span></p>
-            <p><span style="font-size: 13pt;"><strong>Risks: </strong><?php echo $fetched_row['tp_risk']; ?></span></p>
-            <p><span style="font-size: 13pt;"><strong>Test stratergy:</strong></span></p>
+            <h1 style="text-align: center;" ><span style="font-size: 24pt; font-family: 'times new roman', times;">  Test Plan Report </h1>
+            <p style="text-align: left;">&nbsp;</p>
+            <p><span style="font-family: 'times new roman', times; font-size: 14pt;" name="tp_name"><strong>Test plan for: <?php echo  $fetched_row['tp_name']; ?></strong></span></p>
+            <p><span style="font-family: 'times new roman', times;font-size: 13pt;"><strong>Introduction: </strong><?php echo $fetched_row['tp_introduction']; ?></span></p>
+            <p><span style="font-family: 'times new roman', times;font-size: 13pt;"><strong>People:&nbsp;</strong><?php echo $fetched_row['tp_responsibilities']; ?></span></p>
+            <p><span style="font-family: 'times new roman', times;font-size: 13pt;"><strong>Risks: </strong><?php echo $fetched_row['tp_risk']; ?></span></p>
+            <p><span style="font-family: 'times new roman', times;font-size: 13pt;"><strong>Test stratergy:</strong></span></p>
             <ul>
-            <li><span style="font-size: 12pt;"><strong>Test item:&nbsp;</strong><?php echo $fetched_row['tp_test_item']; ?></span></li>
-            <li><span style="font-size: 12pt;"><strong>Features to be tested:</strong>&nbsp; </span><span style="font-size: 12pt;"><?php echo $fetched_row['tp_features_to_be_tested']; ?></span></li>
-            <li><span style="font-size: 12pt;"><strong>Features not to be tested:</strong> <?php echo $fetched_row['tp_features_not_to_be_tested']; ?></span></li>
-            <li><span style="font-size: 12pt;" name="username" ><strong>Approach:</strong> <?php echo $fetched_row['tp_approach']; ?></span></li>
-            <li><span style="font-size: 12pt;"><strong>Item pass/fail criteria:</strong> <?php echo $fetched_row['tp_item_passfail_criteria']; ?></span></li>
-            <li><span style="font-size: 12pt;"><strong>Testing task:</strong> <?php echo $fetched_row['tp_testing_task']; ?></span></li>
-            <li><span style="font-size: 12pt;"><strong>Test deliverables:</strong> <?php echo $fetched_row['tp_test_deliverable']; ?></span></li>
-            <li><span style="font-size: 12pt;"><strong>Environmental needs:</strong> <?php echo $fetched_row['tp_environmental_need']; ?></span></li>
-            <li><span style="font-size: 12pt;"><strong>Approvals:</strong> <?php echo $fetched_row['tp_approval']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;"><strong>Test item:&nbsp;</strong><?php echo $fetched_row['tp_test_item']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;"><strong>Features to be tested:</strong>&nbsp; </span><span style="font-size: 12pt;"><?php echo $fetched_row['tp_features_to_be_tested']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;"><strong>Features not to be tested:</strong> <?php echo $fetched_row['tp_features_not_to_be_tested']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;" name="username" ><strong>Approach:</strong> <?php echo $fetched_row['tp_approach']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;"><strong>Item pass/fail criteria:</strong> <?php echo $fetched_row['tp_item_passfail_criteria']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;"><strong>Testing task:</strong> <?php echo $fetched_row['tp_testing_task']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;"><strong>Test deliverables:</strong> <?php echo $fetched_row['tp_test_deliverable']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;"><strong>Environmental needs:</strong> <?php echo $fetched_row['tp_environmental_need']; ?></span></li>
+            <li><span style="font-family: 'times new roman', times;font-size: 12pt;"><strong>Approvals:</strong> <?php echo $fetched_row['tp_approval']; ?></span></li>
             </ul>
-            <p><span style="font-size: 13pt;"><strong>Testing activities and estimates: </strong><?php echo $fetched_row['tp_schedule']; ?></span></p>
+            <p><span style="font-family: 'times new roman', times;font-size: 13pt;"><strong>Testing activities and estimates: </strong><?php echo $fetched_row['tp_schedule']; ?></span></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
             
