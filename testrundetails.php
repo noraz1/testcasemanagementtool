@@ -329,9 +329,11 @@ Tip 2: you can also add an image using data-image tag
              <div class="content">
                 <div class="container-fluid">
                 
-                <div style="height:70px; text-align: right;" >    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Run all tests
-</button></div></div>
+                <div style="height:70px; text-align: right;" >   
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Run all tests</button>
+                 <a type="button" class="btn btn-primary" href="testrunreport.php?id=<?php echo $id ?>&trid=<?php echo $tr_id; ?>">View Report</a>
+                </div>
+            </div>
             
                     <!-- row 1-->
                     <div class="row">

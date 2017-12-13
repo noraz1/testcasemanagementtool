@@ -13,7 +13,7 @@ or die (" failed to query database" .mysql_error());
 
 $row = mysqli_fetch_array($res);
 
-if ($row['username'] == $username && $row['password'] == $password)  {
+if ($row['username'] == $username && $row['passwords'] == $password)  {
 ?>
   <script type="text/javascript">
 

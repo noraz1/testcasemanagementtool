@@ -20,7 +20,7 @@ if (isset ($_POST['submit'])) {
 
   // insert
 
-  $query = " INSERT INTO student (firstname, lastname, matricnum, major, groupclass, username, email, password ) 
+  $query = " INSERT INTO student (firstname, lastname, matricnum, major, classgroup, username, email, passwords ) 
   VALUES ('$firstname','$lastname', '$matricnum','$major', '$groupclass', '$username','$email', '$password' )";
 
   $result = mysqli_query($con,$query);
@@ -33,10 +33,12 @@ if (isset ($_POST['submit'])) {
 
 <script type="text/javascript">
 alert ('register success!');
-header('Location: index.php');
 </script>
 
+
 <?php
+ header("location:index.php");
+ 
 }
 else
 {
@@ -160,7 +162,7 @@ confirm_password.onkeyup = validatePassword;
   <div class="col-md-8">
 
     <button id="submit" name="submit" class="btn btn-success" href="login.php">Sign In</button>
-    <button id="cancel" name="cancel"  href="index.php" class="btn btn-danger">Cancel</button>
+    <a id="cancel" name="cancel"  href="index.php" class="btn btn-danger">Cancel</a>
   </div>
 </div>
       </div>
