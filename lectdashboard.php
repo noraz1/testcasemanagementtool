@@ -7,7 +7,7 @@ include_once 'conn.php';
 //$classgroup = isset($_POST['classgroup']) ? $_POST['classgroup'] : false;
 //if (($classgroup == '')) {
   // echo htmlentities($_POST['classgroup'], ENT_QUOTES, "UTF-8");
-  //$classgroup = 0;
+  $classgroup = 1;
   
 //} else {
    
@@ -139,10 +139,17 @@ alert ('failed to add feedback. please try again!');
                 <input type="submit" value="5" name="mybutton">
             </form>  
             <?php 
+            
    if (isset($_POST["mybutton"]))
    {
     $_SESSION['classgroup']=$_POST["mybutton"];
    }
+   
+   if ($_SESSION['classgroup']=='')
+   {
+    $_SESSION['classgroup']=0;
+   }
+   
 ?> 
             </li>       -->
 <!--

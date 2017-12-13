@@ -7,6 +7,7 @@ $id = $_GET['id'];
 $tr_id = $_GET['trid'];
 $studentid =$_SESSION['studentid'];
 
+
 // get ts_id
 $result1=mysqli_query($con,"SELECT * FROM runtestcase WHERE tr_id= $tr_id");
 $row2=mysqli_fetch_array($result1);
@@ -61,7 +62,7 @@ if ($row2['tr_id'] !== $tr_id) {
     $result2= mysqli_query($con,$query2);
     mysqli_data_seek($result1, 0);
 } else{
-//echo "data already exist:";
+   
 
 }
 
@@ -130,6 +131,21 @@ if(isset($_POST['submit'])){
         <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
         
 <!-- Button trigger modal -->
+
+<!-- realod page -->
+<script type="text/javascript">
+$(document).ready(function(){    
+    //Check if the current URL contains '#'
+    if(document.URL.indexOf("#")==-1){
+        // Set the URL to whatever it was plus "#".
+        url = document.URL+"#";
+        location = "#";
+
+        //Reload the page
+        location.reload(true);
+    }
+});
+</script>
 
 <!-- donut chart -->
 
