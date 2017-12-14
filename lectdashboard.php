@@ -7,8 +7,7 @@ include_once 'conn.php';
 //$classgroup = isset($_POST['classgroup']) ? $_POST['classgroup'] : false;
 //if (($classgroup == '')) {
   // echo htmlentities($_POST['classgroup'], ENT_QUOTES, "UTF-8");
-  $classgroup = 1;
-  
+
 //} else {
    
   
@@ -30,10 +29,23 @@ if(isset($_POST['submit'])){
     $mark = $_POST['mark'];
     $feedback = $_POST['feedback'];
 
+    if (($_POST["mark"]) >20) {
+        ?>
+        <script type="text/javascript">
+        alert ('Please input a mark between 1 and 20');
+       
+        </script> 
+         
+        <?php
+        $mark = 0;
+     }else {
+        $mark = ($_POST["mark"]);
+     }
+
     $res=mysqli_query($con,"UPDATE tp_lecturer SET mark='$mark',feedback='$feedback' WHERE tpl_id=$tpl_id");
    
     
-  if ($res)
+  if ($res && $mark != 0)
   {
 ?>
 <script type="text/javascript">
@@ -144,7 +156,7 @@ alert ('failed to add feedback. please try again!');
    {
     $_SESSION['classgroup']=$_POST["mybutton"];
    }
-   
+
    if ($_SESSION['classgroup']=='')
    {
     $_SESSION['classgroup']=0;
@@ -391,14 +403,17 @@ alert ('failed to add feedback. please try again!');
                                                             <textarea class="form-control" cols="40" rows="10" id="feedback" name="feedback" type="text"><?php echo $feedback; ?> </textarea> 
                                                             <label style= "float: left;" class="control-label requiredField " for="mark"> Please Enter Student Mark <span class="asteriskField"> *</span> </label>
                                                             <input class="form-control" id="mark" name="mark" placeholder="Enter Student Mark" value =" <?php echo $mark;?>" type="text"/> 
-                                                            <span class="help-block"  id="mark">=Maximum mark is 20=</span>
+                                                            <span class="help-block"  style= "float: left;"  id="mark">Please input a mark between 1 and 20</span>
+                                                           
+
                                                         </div>
                                                         <div class="form-group">
                                                             <div>
-                                                                <button class="btn btn-primary " name="submit" type="submit"> Submit</button>
+                                                                <button class="btn btn-primary " name="submit" type="submit" > Submit</button>
                                                             </div>
                                                         </div>
                                                          </form>
+                                                        
                                                     </div>
                                             <a  class="btn btn-success" href="#" onclick="TestPlan()">Download PDF</a>
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

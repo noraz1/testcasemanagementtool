@@ -24,7 +24,7 @@ if (isset($_POST['update'])) {
 
    
    //INSERT
-   $res=mysqli_query($con,"UPDATE student SET firstname='$firstname', lastname='$lastname' , matricnum='$matricnum', major='$major', classgroup='$classgroup', username='$username', email='$email', password='$password'  WHERE studentid=".$_SESSION['studentid']);
+   $res=mysqli_query($con,"UPDATE student SET firstname='$firstname', lastname='$lastname' , matricnum='$matricnum', major='$major', classgroup='$classgroup', username='$username', email='$email', passwords='$password'  WHERE studentid=".$_SESSION['studentid']);
    header('Location: viewprofile.php');
  
    }
@@ -242,13 +242,13 @@ if (isset($_POST['update'])) {
 
    <div class="form-group ">
     <label class="control-label requiredField" for="password">Password<span class="asteriskField"> *</span></label>
-    <input class="form-control" id="password" name="password" value="<?php echo $fetched_row['password']; ?>" type="password"/>
+    <input class="form-control" id="password" name="password" value="<?php echo $fetched_row['passwords']; ?>" type="password"/>
    </div>
 
    <div class="form-group ">
     <label class="control-label requiredField" for="confirmpassword"> Confirm Password <span class="asteriskField">*</span>
     </label>
-    <input class="form-control" id="confirmpassword" name="confirmpassword" value="<?php echo $fetched_row['password']; ?>" type="password"/>
+    <input class="form-control" id="confirmpassword" name="confirmpassword" value="<?php echo $fetched_row['passwords']; ?>" type="password"/>
    </div>
 
      <div class="form-group">
