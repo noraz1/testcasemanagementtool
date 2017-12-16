@@ -14,7 +14,6 @@ include_once 'conn.php';
 //}
 
 
-
 $result3=mysqli_query($con,"SELECT * FROM lecturer WHERE lect_id=".$_SESSION['lect_id']);
 $fetched_row=mysqli_fetch_array($result3);
 
@@ -94,6 +93,7 @@ alert ('failed to add feedback. please try again!');
 </style>
 
 <!doctype html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -105,6 +105,7 @@ alert ('failed to add feedback. please try again!');
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
+    
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -124,87 +125,28 @@ alert ('failed to add feedback. please try again!');
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+
+
 </head>
 <body >
 
-<!-- <div class="wrapper">
-    <div  class="w3-sidebar w3-bar-block" style="width:25%" data-color="blue" >
 
-    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
-
-
-      <!-- <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="#" class="simple-text">
-                    TEST CASE MANAGEMENT TOOL
-                </a>
-                </div>
-
-
-            <ul class="nav">
-                <li >
-                <form  autocomplete="off" action="" method="POST" >
-                <input type="submit" value="0" name="mybutton">
-                <input type="submit" value="1" name="mybutton">
-                <input type="submit" value="3" name="mybutton">
-                <input type="submit" value="4" name="mybutton">
-                <input type="submit" value="5" name="mybutton">
-            </form>  
-            <?php 
-            
+     <?php 
+             
    if (isset($_POST["mybutton"]))
    {
     $_SESSION['classgroup']=$_POST["mybutton"];
    }
-
-   if ($_SESSION['classgroup']=='')
-   {
-    $_SESSION['classgroup']=0;
-   }
+   
+   if(!isset($_SESSION['classgroup'])){
+    $_SESSION['classgroup'] = '';
+}
+   
    
 ?> 
-            </li>       -->
-<!--
-                <li>
-                    <a href="devicelist.html">
-                        <i class="pe-7s-note2"></i>
-                        <p>Device List</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="inventorylist.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Inventory List</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
-     </ul>
-    	</div>
-    </div> -->
+      
+           
 
     <div >
         <nav class="navbar navbar-default navbar-fixed">
@@ -267,6 +209,7 @@ alert ('failed to add feedback. please try again!');
         <button name="mybutton" type="submit" value="2" class="btn btn-success">Group 2</button>
         <button name="mybutton" type="submit" value="3" class="btn btn-success">Group 3</button>
         <button name="mybutton" type="submit" value="4" class="btn btn-success">Group 4</button>
+        <button name="mybutton" type="submit" value="5" class="btn btn-success">Group 5</button>
                 <!-- <input type="submit" value="0" name="mybutton">
                 <input type="submit" value="1" name="mybutton">
                 <input type="submit" value="3" name="mybutton">
@@ -302,17 +245,23 @@ alert ('failed to add feedback. please try again!');
                                         <th><font color="black">Matric Number</font></th>
                                         <th><font color="black">Project Description</font></th>
                                         <th><font color="black">Test Plan</font></th>
+                                        <th><font color="black">Status</font></th>
                                         <th><font color="black">Mark</font></th>
                                         <th><font color="black">Mark(<?php if (isset($_POST['subject'])) {
                                               echo $_POST['subject'];
                                                 } else{
                                                     echo "100";
                                                 }?>%)</font></th>
-                                       
+                                       <th><font color="black">Check</font></th>
                                      
                                     <tbody>
 
                                     <?php
+                                    if ($_SESSION['classgroup']=='')
+                                    {
+                                    $_SESSION['classgroup']=0;
+                                 
+                                    }
 
                                     if (( $_SESSION['classgroup']!== 0)) {
                                         $result = mysqli_query ($con,"SELECT * FROM tp_lecturer WHERE classgroup=". $_SESSION['classgroup']);
@@ -325,8 +274,45 @@ alert ('failed to add feedback. please try again!');
                                             $projectdesc = $row['projectdesc'];
                                             $feedback= $row['feedback']; 
                                             $mark= $row['mark'];
-                                           
+
+                                            $tpl_name= $row['tpl_name']; 
+                                            $tpl_introduction= $row['tpl_introduction']; 
+                                            $tpl_test_item= $row['tpl_test_item']; 
+                                            $tpl_features_to_be_tested= $row['tpl_features_to_be_tested']; 
+                                            $tpl_features_not_to_be_tested= $row['tpl_features_not_to_be_tested']; 
+                                            $tpl_approach= $row['tpl_approach']; 
+                                            $tpl_item_passfail_criteria= $row['tpl_item_passfail_criteria']; 
+                                            $tpl_testing_task= $row['tpl_testing_task']; 
+                                            $tpl_test_deliverable= $row['tpl_test_deliverable']; 
+                                            $tpl_environmental_need= $row['tpl_environmental_need']; 
+                                            $tpl_responsibilities= $row['tpl_responsibilities']; 
+                                            $tpl_schedule= $row['tpl_schedule']; 
+                                            $tpl_risk= $row['tpl_risk'];
+                                            $tpl_approval= $row['tpl_approval'];  
+
+                                            //check if all collumn is not empty
+                                                if(($tpl_name=="") || ($tpl_introduction=="") || ($tpl_test_item=="") || ($tpl_features_to_be_tested=="")
+                                                || ($tpl_features_not_to_be_tested=="") || ($tpl_approach=="") || ($tpl_item_passfail_criteria=="") || ($tpl_testing_task=="")
+                                                || ($tpl_test_deliverable=="") || ($tpl_environmental_need=="")  || ($tpl_responsibilities=="") || ($tpl_schedule=="")
+                                                || ($tpl_risk=="") || ($tpl_approval=="")){
+       
+                                                $status = '<span style="color:red;text-align:center;">Not Complete</span>';
+
+                                            } else{
+
+                                                $status = '<span style="color:green;text-align:center;"> Complete</span>';
+                                            }
+
+                                            // check if give feedback or not
+                                            if(($feedback=="")||($mark==0)){
+
+                                                $check= '<span style="color:red;text-align:center;">&#x2718;</span>';
+                                            } else{
+
+                                                $check ='<span style="color:green;text-align:center;"> 	&#10004;</span>';
+                                            }
                                               
+                                            // calculate mark
                                                 if (isset($_POST['subject'])) {
                                                 $mark= $row['mark'];
                                                
@@ -340,6 +326,8 @@ alert ('failed to add feedback. please try again!');
                                                      
                                                      $new_mark = ($mark / $totalmark) * 100; 
                                                 }
+                                                // end calculate mark
+
 
 
                                             ?>
@@ -370,7 +358,7 @@ alert ('failed to add feedback. please try again!');
                                                     <!-- report -->
                                                     <div id="TestPlan" padding-left:" 2cm;"  style=" left:50px; right :50px; width:1200px;" class="container">
                                                     
-                                                        <p><span style="font-size: 14pt;" name="tp_name"><strong>Test plan for: <?php echo $row['tpl_name']; ?></strong></span></p>
+                                                        <p><span style="font-size: 14pt;" name="tp_name"><strong>Test plan for: <?php echo $tpl_name; ?></strong></span></p>
                                                         <p><span style="font-size: 13pt;"><strong>Introduction: </strong><?php echo $row['tpl_introduction']; ?></span></p>
                                                         <p><span style="font-size: 13pt;"><strong>People:&nbsp;</strong><?php echo $row['tpl_responsibilities']; ?></span></p>
                                                         <p><span style="font-size: 13pt;"><strong>Risks: </strong><?php echo $row['tpl_risk']; ?></span></p>
@@ -468,9 +456,10 @@ alert ('failed to add feedback. please try again!');
                                    
 
                                            
-                                       
+                                        <td> <?php echo $status;?></td>
                                         <td> <?php echo $mark;?></td>
                                         <td> <?php echo $new_mark;?></td>
+                                        <td> <?php echo $check;?></td>
                                        
                                         <!-- <td>  <button id="toggle" onclick="myFunction()">Unchecked yet!</button></td> -->
                                     <?php
