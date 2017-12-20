@@ -33,8 +33,7 @@
 
                           <div class="logo">
                             <a class="logo-wrap" href="index.php">
-                                <img class="logo-img logo-img-main" src="#" alt="TestCaseManagementTool" >
-                               
+                              
                             </a>
                         </div>
                     </div>

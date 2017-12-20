@@ -4,22 +4,18 @@ include_once 'conn.php';
 // dapat testplan id
 $id = $_GET['id'];
 $studentid =$_SESSION['studentid'];
-
 //read testplan
 $result=mysqli_query($con,"SELECT * FROM testplan WHERE tp_id=$id");
 $fetched_row=mysqli_fetch_array($result);
 $projectid= $fetched_row['projectid'];
-
 // read project description
 $result2=mysqli_query($con,"SELECT * FROM project WHERE projectid=$projectid");
 $fetched_row2=mysqli_fetch_array($result2);
 $projectdesc= $fetched_row2['projectdesc'];
-
 //feedback
 $result1=mysqli_query($con,"SELECT * FROM tp_lecturer WHERE tpl_id=$id");
 $fetched_row1=mysqli_fetch_array($result1);
 $feedback= $fetched_row1['feedback'];
-
 //student group
 $result4=mysqli_query($con,"SELECT * FROM student WHERE studentid=".$_SESSION['studentid']);
 $row=mysqli_fetch_array($result4);
@@ -36,7 +32,6 @@ div.container {
     margin-left: 50px;
     border: 1px solid gray;
 }
-
 .button {
     display: block;
     padding: 10px;
@@ -65,7 +60,6 @@ div.container {
     
    
 }
-
 </style>
 
 <!DOCTYPE html>
@@ -86,13 +80,17 @@ div.container {
      <div align="center" class="right">
           <!-- button -->
         <div class="button" >
-            <div class="btn-group" >
+            <div  >
+            <form method="post" action=""> 
                  <a class="btn btn-success" href="#" onclick="TestPlan()">Download PDF</a>
-                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                      Open comment
                  </button>
-                 <button class="btn btn-success" type="submit" id="submit" value="1"  name="submit" onclick= "myFunction()" >Submit</button>
+            
+                 <button class="btn btn-success" name="submit" type="submit" >Submit</button>
 
+                </form>
+               
              </div>
         </div>
      </div>
@@ -100,46 +98,49 @@ div.container {
 
 
 <!-- submit to lecturer -->
-     <script>
-function myFunction() {
-   
-    if (confirm('Are you sure you want to submit this Test Plan to lecturer?')) {
+<?php
+ if (isset($_POST['submit'])) {
 
-             <?php
-             // delete old data in tpl
-            mysqli_query($con, "DELETE FROM tp_lecturer WHERE tpl_id=$id");
-            
-           // insert new data
-         //  $query = " INSERT INTO tp_lecturer (tpl_id, projectid, tpl_name, tpl_introduction, tpl_test_item, tpl_features_to_be_tested, tpl_features_not_to_be_tested, tpl_approach,
-          // tpl_item_passfail_criteria, tpl_testing_task, tpl_test_deliverable, tpl_environmental_need,
-         //  tpl_responsibilities, tpl_schedule, tpl_risk, tpl_approval, groupclass ) 
-          // VALUES ('$tp_id ','$projectid ','$tp_name','$tp_introduction','$tp_test_item','$tp_features_to_be_tested','$tp_features_not_to_be_tested', '$tp_approach','$tp_item_passfail_criteria',$tp_testing_task','$tp_test_deliverable',
-          // '$tp_environmental_need', '$tp_responsibilities','$tp_schedule','$tp_risk', '$tp_approval','$groupclass') WHERE tp_id=$id";
-         $query9= " INSERT INTO tp_lecturer (tpl_id, projectid, tpl_name, tpl_introduction, tpl_test_item, tpl_features_to_be_tested, tpl_features_not_to_be_tested, tpl_approach,
-          tpl_item_passfail_criteria, tpl_testing_task, tpl_test_deliverable, tpl_environmental_need,
-          tpl_responsibilities, tpl_schedule, tpl_risk, tpl_approval) SELECT tp_id, projectid, tp_name, tp_introduction, tp_test_item, tp_features_to_be_tested, tp_features_not_to_be_tested, tp_approach,
-           tp_item_passfail_criteria, tp_testing_task, tp_test_deliverable, tp_environmental_need,
-          tp_responsibilities, tp_schedule, tp_risk, tp_approval FROM testplan WHERE tp_id=$id";
-            $result9= mysqli_query($con,$query9);
-           mysqli_query($con, "UPDATE tp_lecturer SET classgroup='$classgroup' WHERE tpl_id=$id");
-           mysqli_query($con, "UPDATE tp_lecturer SET matricnum='$matricnum' WHERE tpl_id=$id");
-           mysqli_query($con, "UPDATE tp_lecturer SET projectdesc='$projectdesc' WHERE tpl_id=$id");
-       //    mysqli_query($con, "INSERT INTO tp_lecturer SET projectdesc='$projectdesc' WHERE tpl_id=$id");
-          
-           
+
+    mysqli_query($con, "DELETE FROM tp_lecturer WHERE tpl_id=$id");
+    
+   // insert new data
+ //  $query = " INSERT INTO tp_lecturer (tpl_id, projectid, tpl_name, tpl_introduction, tpl_test_item, tpl_features_to_be_tested, tpl_features_not_to_be_tested, tpl_approach,
+  // tpl_item_passfail_criteria, tpl_testing_task, tpl_test_deliverable, tpl_environmental_need,
+ //  tpl_responsibilities, tpl_schedule, tpl_risk, tpl_approval, groupclass ) 
+  // VALUES ('$tp_id ','$projectid ','$tp_name','$tp_introduction','$tp_test_item','$tp_features_to_be_tested','$tp_features_not_to_be_tested', '$tp_approach','$tp_item_passfail_criteria',$tp_testing_task','$tp_test_deliverable',
+  // '$tp_environmental_need', '$tp_responsibilities','$tp_schedule','$tp_risk', '$tp_approval','$groupclass') WHERE tp_id=$id";
+ $query9= " INSERT INTO tp_lecturer (tpl_id, projectid, tpl_name, tpl_introduction, tpl_test_item, tpl_features_to_be_tested, tpl_features_not_to_be_tested, tpl_approach,
+  tpl_item_passfail_criteria, tpl_testing_task, tpl_test_deliverable, tpl_environmental_need,
+  tpl_responsibilities, tpl_schedule, tpl_risk, tpl_approval) SELECT tp_id, projectid, tp_name, tp_introduction, tp_test_item, tp_features_to_be_tested, tp_features_not_to_be_tested, tp_approach,
+   tp_item_passfail_criteria, tp_testing_task, tp_test_deliverable, tp_environmental_need,
+  tp_responsibilities, tp_schedule, tp_risk, tp_approval FROM testplan WHERE tp_id=$id";
+    $result9= mysqli_query($con,$query9);
+   mysqli_query($con, "UPDATE tp_lecturer SET classgroup='$classgroup' WHERE tpl_id=$id");
+   mysqli_query($con, "UPDATE tp_lecturer SET matricnum='$matricnum' WHERE tpl_id=$id");
+   mysqli_query($con, "UPDATE tp_lecturer SET projectdesc='$projectdesc' WHERE tpl_id=$id");
+//    mysqli_query($con, "INSERT INTO tp_lecturer SET projectdesc='$projectdesc' WHERE tpl_id=$id");
+  
+   
 if($result9){
-            
-            ?>
-           alert ('you are successfully submit this test plan to lecturer!');
-            
-         <?php }?>   
-
-   
-} else {
-    alert ('Failed to submit this test plan to lecturer! Please try again.');
-}
-}
+    ?>
+ <script type="text/javascript">
+   alert ('you are successfully submit this test plan to lecturer!');
+    
 </script>
+<?php
+ 
+  }
+
+
+ 
+
+
+}
+  
+ 
+?>
+   
 
 
 

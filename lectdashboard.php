@@ -463,6 +463,7 @@ alert ('failed to add feedback. please try again!');
                                        
                                         <!-- <td>  <button id="toggle" onclick="myFunction()">Unchecked yet!</button></td> -->
                                     <?php
+                                    $i++;
                                               
                                         }
 
