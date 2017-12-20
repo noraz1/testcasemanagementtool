@@ -147,7 +147,7 @@ Tip 2: you can also add an image using data-image tag
         <ul class="nav">
             <li class="active">
                 <a href="dashboard.php">
-                    <i class="pe-7s-graph"></i>
+                    <i class="pe-7s-note2"></i>
                     <p>All Project</p>
                 </a>
             </li>
@@ -228,11 +228,11 @@ Tip 2: you can also add an image using data-image tag
                     <div class="row">
                         <form method="post">
                             <div class="form-group ">
-                                <label class="control-label requiredField" for="projectname"> Project Name <span class="asteriskField"> *</span> </label>
+                                <label class="control-label requiredField" for="projectname"> <font color="black"> Project Name</font> <span class="asteriskField"> *</span> </label>
                                 <input class="form-control" id="projectname" name="projectname" placeholder="Enter Project Name" type="text"/>
                             </div>
                                 <div class="form-group ">
-                                    <label class="control-label " for="projectdesc"> Project Description</label>
+                                    <label class="control-label " for="projectdesc"><font color="black">  Project Description</font></label>
                                         <textarea class="form-control" cols="40" rows="10" id="projectdesc" name="projectdesc" type="text"> </textarea> 
                                 </div>
                                     <div class="form-group">
@@ -261,7 +261,7 @@ Tip 2: you can also add an image using data-image tag
 <!-- row for table -->
     
     <div class="row">   
-    <div class="card">
+    <div >
 <div class="panel-body">
 <div class="col-md-11">
 <table class="table table-hover table-bordered">
@@ -294,7 +294,10 @@ Tip 2: you can also add an image using data-image tag
 
      
     </tr>
- 
+ <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
   <!-- edit modal -->
 <div id="edit<?php echo $projectid;?>" class="w3-modal" data-backdrop="false">
 <div class="w3-modal-content">
@@ -309,11 +312,11 @@ Tip 2: you can also add an image using data-image tag
                 <div class="form-group ">
                  <!-- newly added field -->
                     <input type="hidden" name="projectid" value="<?php echo $projectid; ?>">
-                    <label class="control-label requiredField" for="projectname"> Project Name <span class="asteriskField"> *</span> </label>
+                    <label class="control-label requiredField" for="projectname"><font color="black"> Project Name</font> <span class="asteriskField"> *</span> </label>
                     <input class="form-control" id="projectname" name="projectname" value="<?php echo $projectname; ?>"  type="text"/>
                 </div>
                     <div class="form-group ">
-                        <label class="control-label " for="projectdesc"> Project Description</label>
+                        <label class="control-label " for="projectdesc"><font color="black">  Project Description </font></label>
                             <textarea class="form-control" cols="40" rows="10" id="projectdesc"  name="projectdesc" type="text"> <?php echo $projectdesc; ?></textarea> 
                     </div>
                         <div class="form-group">

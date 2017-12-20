@@ -258,51 +258,56 @@ Tip 1: you can change the color of the sidebar using: data-color="blue | azure |
 Tip 2: you can also add an image using data-image tag
 -->
 
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="#" class="simple-text">
-           TEST CASE MANAGEMENT TOOL
+<div class="sidebar-wrapper">
+<div class="logo">
+    <a href="#" class="simple-text">
+   TEST CASE MANAGEMENT TOOL
+</a>
+</div>
+
+<ul class="nav">
+    <li >
+        <a href="dashboard.php">
+            <i class="pe-7s-note2"></i>
+            <p>All Project</p>
         </a>
-        </div>
+    </li>
+    
 
-        <ul class="nav">
-            <li >
-                <a href="dashboard.php">
-                    <i class="pe-7s-graph"></i>
-                    <p>All Project</p>
-                </a>
-            </li>
-
-
-            <!-- <li>
-                <a href="overview.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-note2"></i>
-                    <p>Overview</p>
-                </a>
-            </li> -->
-            <li >
-            <a href="testplan.php?id=<?php echo $id ?>">
-                <i class="pe-7s-news-paper"></i>
-                <p>Test Plan</p>
-            </a>
-        </li>
-            <li >
-                <a href="testsuite.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-science"></i>
-                    <p>Test Suite</p>
-                </a>
-            </li>
-            <li class="active">
-                <a href="testrun.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Test Run</p>
-                </a>
-            </li>
-           
+    <!-- <li>
+        <a href="overview.php?id=<?php echo $id ?>">
+            <i class="pe-7s-note2"></i>
+            <p>Overview</p>
+        </a>
+    </li> -->
+    <li class="active" >
+    <a href="testplan.php?id=<?php echo $id ?>">
+        <i class="pe-7s-news-paper"></i>
+        <p>Test Plan</p>
+    </a>
+</li>
+    <li >
+        <a href="testsuite.php?id=<?php echo $id ?>">
+            <i class="pe-7s-copy-file"></i>
+            <p>Test Suite</p>
+        </a>
+    </li>
+    <li>
+        <a href="testrun.php?id=<?php echo $id ?>">
+            <i class="pe-7s-display1"></i>
+            <p>Test Run</p>
+        </a>
+    </li>
+    <li >
+    <a href="alltestplan.php?id=<?php echo $id ?>">
+            <i class="pe-7s-notebook"></i>
+            <p>All Test Plan</p>
+        </a>
+    </li>
 
 
-        </ul>
-    </div>
+</ul>
+</div>
 </div>
 
 <div class="main-panel">

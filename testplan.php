@@ -155,51 +155,56 @@ Tip 1: you can change the color of the sidebar using: data-color="blue | azure |
 Tip 2: you can also add an image using data-image tag
 -->
 
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="#" class="simple-text">
-           TEST CASE MANAGEMENT TOOL
+<div class="sidebar-wrapper">
+<div class="logo">
+    <a href="#" class="simple-text">
+   TEST CASE MANAGEMENT TOOL
+</a>
+</div>
+
+<ul class="nav">
+    <li >
+        <a href="dashboard.php">
+            <i class="pe-7s-note2"></i>
+            <p>All Project</p>
         </a>
-        </div>
+    </li>
+    
 
-        <ul class="nav">
-            <li >
-                <a href="dashboard.php">
-                    <i class="pe-7s-graph"></i>
-                    <p>All Project</p>
-                </a>
-            </li>
-
-
-            <!-- <li>
-                <a href="overview.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-note2"></i>
-                    <p>Overview</p>
-                </a>
-            </li> -->
-            <li class="active">
-            <a href="testplan.php?id=<?php echo $id ?>">
-                <i class="pe-7s-news-paper"></i>
-                <p>Test Plan</p>
-            </a>
-        </li>
-            <li>
-                <a href="testsuite.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-science"></i>
-                    <p>Test Suite</p>
-                </a>
-            </li>
-            <li>
-                <a href="testrun.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Test Run</p>
-                </a>
-            </li>
-           
+    <!-- <li>
+        <a href="overview.php?id=<?php echo $id ?>">
+            <i class="pe-7s-note2"></i>
+            <p>Overview</p>
+        </a>
+    </li> -->
+    <li class="active" >
+    <a href="testplan.php?id=<?php echo $id ?>">
+        <i class="pe-7s-news-paper"></i>
+        <p>Test Plan</p>
+    </a>
+</li>
+    <li >
+        <a href="testsuite.php?id=<?php echo $id ?>">
+            <i class="pe-7s-copy-file"></i>
+            <p>Test Suite</p>
+        </a>
+    </li>
+    <li>
+        <a href="testrun.php?id=<?php echo $id ?>">
+            <i class="pe-7s-display1"></i>
+            <p>Test Run</p>
+        </a>
+    </li>
+    <li >
+    <a href="alltestplan.php?id=<?php echo $id ?>">
+            <i class="pe-7s-notebook"></i>
+            <p>All Test Plan</p>
+        </a>
+    </li>
 
 
-        </ul>
-    </div>
+</ul>
+</div>
 </div>
 
 <div class="main-panel">
@@ -239,7 +244,7 @@ Tip 2: you can also add an image using data-image tag
 <!-- head table -->
 <div class="container">
     <div class="row">
-    <div class="card">
+    <div >
         <div class="col-md-11">
             <div class="panel-heading">
             <div class="w3-container">
@@ -377,13 +382,13 @@ Tip 2: you can also add an image using data-image tag
     <form method="post">
      <div class="form-group ">
      <input type="hidden" name="tp_id" value="<?php echo $tp_id; ?>">
-      <label class="control-label requiredField" for="tp_name">Test Plan Name<span class="asteriskField"> *</span>
+      <label class="control-label requiredField" for="tp_name"><font color="black"> Test Plan Name<span class="asteriskField"> *</span>
       </label>
       <input class="form-control" id="tp_name" name="tp_name" value="<?php echo $tp_name; ?>" type="text"/>
      </div>
 
      <div class="form-group ">
-      <label class="control-label " for="tp_introduction">Introduction </label>
+      <label class="control-label " for="tp_introduction"><font color="black"> Introduction </label>
       <textarea class="form-control" cols="40"  id="tp_introduction" name="tp_introduction" rows="7"><?php echo $tp_introduction; ?></textarea>
       <span class="help-block"  id="hint_tp_introduction">
        Provide an overview of the plan, in terms of what the particular project encompasses. You may briefly mention items such as limitations in resources and budgets, scope of testing and how other activities such as reviews are related. This is just a summary, so keep things short.
@@ -391,7 +396,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_test_item">
-       Test items
+      <font color="black">  Test items
       </label>
       <textarea class="form-control" cols="40" id="tp_test_item" name="tp_test_item" rows="7"><?php echo $tp_test_item; ?></textarea>
       <span class="help-block" id="hint_tp_test_item">
@@ -400,7 +405,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="message2">
-       Features to be tested
+      <font color="black">  Features to be tested
       </label>
       <textarea class="form-control" cols="40" id="tp_features_to_be_tested" name="tp_features_to_be_tested" rows="7"><?php echo $tp_features_to_be_tested; ?></textarea>
       <span class="help-block" id="hint_message2">
@@ -409,7 +414,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="message3">
-       Features not to be tested
+      <font color="black">  Features not to be tested
       </label>
       <textarea class="form-control" cols="40" id="tp_features_not_to_be_tested" name="tp_features_not_to_be_tested" rows="7"><?php echo $tp_features_not_to_be_tested; ?></textarea>
       <span class="help-block" id="hint_message3">
@@ -418,16 +423,16 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_approach">
-       Approach
+      <font color="black">  Approach
       </label>
       <textarea class="form-control" cols="40" id="tp_approach" name="tp_approach" rows="7"><?php echo $tp_approach; ?></textarea>
       <span class="help-block" id="hint_tp_approach">
-       Outline the overall test strategy for this plan, identifying the test process and rules that will be followed. You may also want to include any information about tools, software, or hardware that will be used.
+        Outline the overall test strategy for this plan, identifying the test process and rules that will be followed. You may also want to include any information about tools, software, or hardware that will be used.
       </span>
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_item_passfail_criteria">
-       Item pass/fail criteria
+      <font color="black"> Item pass/fail criteria
       </label>
       <textarea class="form-control" cols="40" id="tp_item_passfail_criteria" name="tp_item_passfail_criteria" rows="7"><?php echo $tp_item_passfail_criteria; ?></textarea>
       <span class="help-block" id="hint_tp_item_passfail_criteria">
@@ -436,7 +441,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_testing_task">
-       Testing tasks
+      <font color="black">  Testing tasks
       </label>
       <textarea class="form-control" cols="40" id="tp_testing_task" name="tp_testing_task" rows="7"><?php echo $tp_testing_task; ?></textarea>
       <span class="help-block" id="hint_tp_testing_task">
@@ -445,7 +450,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_test_deliverable">
-       Test deliverables
+      <font color="black">  Test deliverables
       </label>
       <textarea class="form-control" cols="40" id="tp_test_deliverable" name="tp_test_deliverable" rows="7"><?php echo $tp_test_deliverable; ?></textarea>
       <span class="help-block" id="hint_tp_test_deliverable">
@@ -454,7 +459,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_environmental_need">
-       Environmental needs
+      <font color="black">  Environmental needs
       </label>
       <textarea class="form-control" cols="40" id="tp_environmental_need" name="tp_environmental_need" rows="7" ><?php echo $tp_environmental_need; ?></textarea>
       <span class="help-block" id="hint_tp_environmental_need">
@@ -463,16 +468,16 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_responsibilities">
-       Responsibilities
+      <font color="black">  Responsibilities
       </label>
       <textarea class="form-control" cols="40" id="tp_responsibilities" name="tp_responsibilities" rows="7"><?php echo $tp_responsibilities; ?></textarea>
       <span class="help-block" id="hint_tp_responsibilities">
-       Provide details of who has the responsibility of delivering different parts of the test plan.
+        Provide details of who has the responsibility of delivering different parts of the test plan.
       </span>
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_schedule">
-       Schedule
+      <font color="black">  Schedule
       </label>
       <textarea class="form-control" cols="40" id="tp_schedule" name="tp_schedule" rows="7"><?php echo $tp_schedule; ?></textarea>
       <span class="help-block" id="hint_tp_schedule">
@@ -481,7 +486,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_risk">
-       Risks and contingencies
+      <font color="black">  Risks and contingencies
       </label>
       <textarea class="form-control" cols="40" id="tp_risk" name="tp_risk" rows="7"><?php echo $tp_risk; ?></textarea>
       <span class="help-block" id="hint_tp_risk">
@@ -490,7 +495,7 @@ Tip 2: you can also add an image using data-image tag
      </div>
      <div class="form-group ">
       <label class="control-label " for="tp_approval">
-       Approvals
+      <font color="black">  Approvals
       </label>
       <textarea class="form-control" cols="40" id="tp_approval" name="tp_approval" rows="7"><?php echo $tp_approval; ?></textarea>
       <span class="help-block" id="hint_tp_risk">

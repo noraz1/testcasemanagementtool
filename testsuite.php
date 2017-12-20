@@ -100,7 +100,10 @@ if (isset($_GET['del'])) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  
+  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
   
     <title>Test Case Management Tool</title>
 
@@ -139,51 +142,56 @@ Tip 1: you can change the color of the sidebar using: data-color="blue | azure |
 Tip 2: you can also add an image using data-image tag
 -->
 
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="#" class="simple-text">
-           TEST CASE MANAGEMENT TOOL
+<div class="sidebar-wrapper">
+<div class="logo">
+    <a href="#" class="simple-text">
+   TEST CASE MANAGEMENT TOOL
+</a>
+</div>
+
+<ul class="nav">
+    <li >
+        <a href="dashboard.php">
+            <i class="pe-7s-note2"></i>
+            <p>All Project</p>
         </a>
-        </div>
+    </li>
+    
 
-        <ul class="nav">
-            <li >
-                <a href="dashboard.php">
-                    <i class="pe-7s-graph"></i>
-                    <p>All Project</p>
-                </a>
-            </li>
-
-
-            <!-- <li>
-                <a href="overview.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-note2"></i>
-                    <p>Overview</p>
-                </a>
-            </li> -->
-            <li >
-            <a href="testplan.php?id=<?php echo $id ?>">
-                <i class="pe-7s-news-paper"></i>
-                <p>Test Plan</p>
-            </a>
-        </li>
-            <li class="active">
-                <a href="testsuite.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-science"></i>
-                    <p>Test Suite</p>
-                </a>
-            </li>
-            <li>
-                <a href="testrun.php?id=<?php echo $id ?>">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Test Run</p>
-                </a>
-            </li>
-           
+    <!-- <li>
+        <a href="overview.php?id=<?php echo $id ?>">
+            <i class="pe-7s-note2"></i>
+            <p>Overview</p>
+        </a>
+    </li> -->
+    <li >
+    <a href="testplan.php?id=<?php echo $id ?>">
+        <i class="pe-7s-news-paper"></i>
+        <p>Test Plan</p>
+    </a>
+</li>
+    <li class="active">
+        <a href="testsuite.php?id=<?php echo $id ?>">
+            <i class="pe-7s-copy-file"></i>
+            <p>Test Suite</p>
+        </a>
+    </li>
+    <li>
+        <a href="testrun.php?id=<?php echo $id ?>">
+            <i class="pe-7s-display1"></i>
+            <p>Test Run</p>
+        </a>
+    </li>
+    <li >
+    <a href="alltestplan.php?id=<?php echo $id ?>">
+            <i class="pe-7s-notebook"></i>
+            <p>All Test Plan</p>
+        </a>
+    </li>
 
 
-        </ul>
-    </div>
+</ul>
+</div>
 </div>
 
 <div class="main-panel">
@@ -223,7 +231,7 @@ Tip 2: you can also add an image using data-image tag
 <!-- head table -->
 <div class="container">
     <div class="row">
-    <div class="card">
+    <div >
         <div class="col-md-11">
             <div class="panel-heading">
             <div class="w3-container">
@@ -259,7 +267,7 @@ Tip 2: you can also add an image using data-image tag
                     <div class="row">
                         <form method="post">
                             <div class="form-group ">
-                                <label class="control-label requiredField" for="ts_name"> Test Suite Name <span class="asteriskField"> *</span> </label>
+                                <label class="control-label requiredField" for="ts_name"> <font color="black"> Test Suite Name <span class="asteriskField"> *</span> </label>
                                 <input class="form-control" id="ts_name" name="ts_name" placeholder="Enter test suite name" type="text"/>
                             </div>
                                     <div class="form-group">
@@ -349,7 +357,7 @@ Tip 2: you can also add an image using data-image tag
     <form method="post">
      <div class="form-group ">
      <input type="hidden" name="ts_id" value="<?php echo $ts_id; ?>">
-      <label class="control-label requiredField" for="ts_name">Test Suite Name<span class="asteriskField"> *</span>
+      <label class="control-label requiredField" for="ts_name"><font color="black"> Test Suite Name<span class="asteriskField"> *</span>
       </label>
       <input class="form-control" id="ts_name" name="ts_name" value="<?php echo $ts_name; ?>" type="text"/>
      </div>
