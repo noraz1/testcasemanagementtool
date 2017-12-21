@@ -136,7 +136,7 @@ Tip 2: you can also add an image using data-image tag
             <li class="active">
                 <a href="alltestplan.php?id=<?php echo $id ?>">
                     <i class="pe-7s-notebook"></i>
-                    <p>All Test Plan</p>
+                    <p>Test Plan Example</p>
                 </a>
             </li>
 

@@ -169,7 +169,7 @@ Tip 2: you can also add an image using data-image tag
             <p>Overview</p>
         </a>
     </li> -->
-    <li class="active" >
+    <li  >
     <a href="testplan.php?id=<?php echo $id ?>">
         <i class="pe-7s-news-paper"></i>
         <p>Test Plan</p>
@@ -181,7 +181,7 @@ Tip 2: you can also add an image using data-image tag
             <p>Test Suite</p>
         </a>
     </li>
-    <li>
+    <li class="active">
         <a href="testrun.php?id=<?php echo $id ?>">
             <i class="pe-7s-display1"></i>
             <p>Test Run</p>
@@ -190,7 +190,7 @@ Tip 2: you can also add an image using data-image tag
     <li >
     <a href="alltestplan.php?id=<?php echo $id ?>">
             <i class="pe-7s-notebook"></i>
-            <p>All Test Plan</p>
+            <p>Test Plan Example</p>
         </a>
     </li>
 
