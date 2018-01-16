@@ -536,7 +536,7 @@ Tip 2: you can also add an image using data-image tag
  </div>
       <!-- end modal body -->
       <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" name="submit" value="submit" >Save changes</button>
+      <button type="submit" class="btn btn-primary" name="submit" value="submit" >Run</button>
       </form>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         

@@ -73,7 +73,7 @@ div.container {
   
             <div id="TestRun" padding-left:" 2cm;"  style=" left:50px; right :50px; width:1200px;" class="container">
             
-            <p style="text-align: center;"><span style="font-family: 'times new roman', times;"><span style="font-size: 20pt;">TEST RUN REPORT</span></span></p>
+            <p style="text-align: center;"><span style="font-family: 'times new roman', times;"><span style="font-size: 20pt;">TEST STATUS REPORT</span></span></p>
             
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: left;"><span style="font-size: 15pt; font-family: 'times new roman', times;">&nbsp;Project name:&nbsp;<?php echo $projectname ?></span></p>

@@ -354,7 +354,7 @@ Tip 2: you can also add an image using data-image tag
    <!-- radio button -->
    <label class="control-label" for="tc_level_risk">Level of risk: </label>
      <div class="form-group ">
-    <input name="tc_level_risk" type="radio" id="tc_level_risk" value="High" checked>
+    <input name="tc_level_risk" type="radio" id="tc_level_risk" value="High"checked>
     <label for="tc_level_risk">High</label>
 </div>
 
@@ -444,13 +444,13 @@ Tip 2: you can also add an image using data-image tag
 $High="";
 $Medium="";
 $Low="";
-if ($row['tc_level']=='High') {
+if ($row['tc_level']==' High') {
     $High = "checked";
 
-}elseif ($row['tc_level']=='Medium') {
+}elseif ($row['tc_level']==' Medium') {
     $Medium = "checked";
 
-}elseif ($row['tc_level']=='Low') {
+}elseif ($row['tc_level']==' Low') {
     $Low = "checked";
 }
  
@@ -458,13 +458,13 @@ if ($row['tc_level']=='High') {
 $RHigh="";
 $RMedium="";
 $RLow="";
-if ($row['tc_level_risk']=='High') {
+if ($row['tc_level_risk']==' High') {
     $RHigh = "checked";
 
-}elseif ($row['tc_level_risk']=='Medium') {
+}elseif ($row['tc_level_risk']==' Medium') {
     $RMedium = "checked";
 
-}elseif ($row['tc_level_risk']=='Low') {
+}elseif ($row['tc_level_risk']==' Low') {
     $RLow = "checked";
 }
        
@@ -490,7 +490,7 @@ if ($row['tc_level_risk']=='High') {
     <div class="w3-container">
       <span type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</span>
    
-        <div class="modal-header"><h4 class="modal-title">Edit Project</h4></div>
+        <div class="modal-header"><h4 class="modal-title">Edit Test Case</h4></div>
 
         <div class="modal-body">
       <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
@@ -545,17 +545,17 @@ if ($row['tc_level_risk']=='High') {
     <!-- radio button -->
     <label class="control-label" for="tc_level">Test Case Level: </label>
     <div class="form-group ">
-   <input name="tc_level" type="radio" id="tc_level" value="High" <?php echo $High; ?>>
+   <input name="tc_level" type="radio" id="tc_level" value=" High" <?php echo $High; ?>>
    <label for="tc_level">High</label>
 </div>
 
 <div class="form-group">
-   <input name="tc_level" type="radio" id="tc_level" value="Medium" <?php echo $Medium; ?>>
+   <input name="tc_level" type="radio" id="tc_level" value=" Medium" <?php echo $Medium; ?>>
    <label for="tc_risk">Medium</label>
 </div>
 
 <div class="form-group">
-   <input name="tc_level" type="radio" id="tc_level" value="Low" <?php echo $Low; ?>>
+   <input name="tc_level" type="radio" id="tc_level" value=" Low" <?php echo $Low; ?>>
    <label for="tc_level">Low</label>
    <span class="help-block" id="tc_risk">
       The priority level of test case.
@@ -575,17 +575,17 @@ if ($row['tc_level_risk']=='High') {
     <!-- radio button -->
    <label class="control-label" for="tc_level_risk">Level of risk: </label>
    <div class="form-group ">
-  <input name="tc_level_risk" type="radio" id="tc_level_risk" value="High"  <?php echo $RHigh; ?>>
+  <input name="tc_level_risk" type="radio" id="tc_level_risk" value=" High"  <?php echo $RHigh; ?>>
   <label for="tc_level_risk">High</label>
 </div>
 
 <div class="form-group">
-  <input name="tc_level_risk" type="radio" id="tc_level_risk" value="Medium" <?php echo $RMedium; ?>>
+  <input name="tc_level_risk" type="radio" id="tc_level_risk" value=" Medium" <?php echo $RMedium; ?>>
   <label for="tc_level_risk">Medium</label>
 </div>
 
 <div class="form-group">
-  <input name="tc_level_risk" type="radio" id="tc_level_risk" value="Low" <?php echo $RLow; ?>>
+  <input name="tc_level_risk" type="radio" id="tc_level_risk" value=" Low" <?php echo $RLow; ?>>
   <label for="tc_level_risk">Low</label>
 
 </div>
